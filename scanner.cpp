@@ -139,9 +139,11 @@ Token Scanner(int line_nums) {
         }//end of error if sttment
 
         if (nextState > 1000) {
+            //inside the if statment
             if(nextChar == '\n'){
-                nextChar = ' ';
+                    nextChar = ' ';
             }
+            tokens.tokeninstance[index++] = nextChar;
             //printf("I AM HERE !!\n");
             S[S_index++] = nextChar;
             switch (nextState) {
@@ -185,7 +187,6 @@ Token Scanner(int line_nums) {
             S[S_index++] = nextChar; // Append the character to the string
             //nextChar = tokeninstances[index++]; // Read the next character from tokeninstances
             nextChar = fgetc(file_pointer_filterd_file);
-            tokens.tokeninstance[index++] = nextChar;
 
         }
 

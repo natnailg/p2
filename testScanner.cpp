@@ -63,7 +63,7 @@ void readFromFile(char* filename) {
     int line_nums = 1;
     // int index = 0; // to keep track of the current position in tokeninstance
 
-    do {
+    do{
 
         nextChar = fgetc(file_pointer_filterd_file);
         if (nextChar == '\n') {

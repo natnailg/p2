@@ -181,6 +181,7 @@ Token Scanner(int line_nums) {
         }else{
             state = nextState;
             nextChar = (nextChar == '\n') ? ' ' : nextChar;
+            tokens.tokeninstance[index++] = nextChar;
             S[S_index++] = nextChar; // Append the character to the string
             //nextChar = tokeninstances[index++]; // Read the next character from tokeninstances
             nextChar = fgetc(file_pointer_filterd_file);

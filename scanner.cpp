@@ -147,27 +147,27 @@ Token Scanner(int line_nums) {
             switch (nextState) {
                 case 1001:
                     tokens.tokenid = EOFtk;
-                    printf("token found: %s--- %s--line: %d\n", tokenNames[tokens.tokenid], S, line_nums);
-                    exit(EXIT_FAILURE);
-                    //return tokens;
+                   // printf("token found: %s--- %s--line: %d\n", tokenNames[tokens.tokenid], S, line_nums);
+                    //exit(EXIT_FAILURE);
+                    return tokens;
                 case 1002:
                     tokens.tokenid = T1_tk;
-                    printf("token found: %s--- %s--line: %d \n", tokenNames[tokens.tokenid], S, line_nums);
-                    break;
-                    //return tokens;
+                    //printf("token found: %s--- %s--line: %d \n", tokenNames[tokens.tokenid], S, line_nums);
+                    //break;
+                    return tokens;
                 case 1003:
                     tokens.tokenid = T2_tk;
-                    printf("token found: %s----%s--line: %d \n", tokenNames[tokens.tokenid], S, line_nums);
-                    break;
-                    //      return tokens;
+                    //printf("token found: %s----%s--line: %d \n", tokenNames[tokens.tokenid], S, line_nums);
+                    //break;
+                    return tokens;
                 case 1004:
                     tokens.tokenid = T3_tk;
-                    printf("token found: %s-----%s--line: %d \n", tokenNames[tokens.tokenid],S, line_nums);
-                    break;
-                    //      return tokens;
+                    //printf("token found: %s-----%s--line: %d \n", tokenNames[tokens.tokenid],S, line_nums);
+                    //break;
+                    return tokens;
                 default:
                     tokens.tokenid = unknown;
-                    printf("token found: %s--------%s--line: %d\n", tokenNames[tokens.tokenid],S, line_nums);
+                    //printf("token found: %s--------%s--line: %d\n", tokenNames[tokens.tokenid],S, line_nums);
                     return tokens;
             }
             state = 0;

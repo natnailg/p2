@@ -59,7 +59,7 @@ void readFromFile(char* filename) {
     }
 
     // char input_char;
-    // struct Token token;
+     struct Token tokens;
     int line_nums = 1;
     // int index = 0; // to keep track of the current position in tokeninstance
 
@@ -73,7 +73,10 @@ void readFromFile(char* filename) {
             continue;
         }
 
-        Scanner(line_nums);
+        tokens = Scanner(line_nums);
+
+        printf("token found: %s--- %s--line: %d\n", tokenNames[tokens.tokenid], S, line_nums);
+
         //Scannertest(line_nums);
     } while (nextChar != EOF);
 

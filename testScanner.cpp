@@ -92,6 +92,8 @@ void readFromFile(char* filename) {
     fclose(file_pointer_filterd_file);
 }
 ////////////////////////////////////////////////////////////////////////
-void S(){
-    printf("out of s if statment %s\n", tokenNames[tokens.tokenid]);
+void S() {
+    if (tokens.tokenid == T2_tk) {
+        printf("out of s if statment %s\n", tokenNames[tokens.tokenid]);
+    }
 }

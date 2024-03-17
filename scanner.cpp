@@ -115,6 +115,7 @@ Token Scanner(int line_nums) {
             tokens.tokeninstance[index++] = nextChar;
             switch (nextState) {
                 case -1:
+                    //tokens.tokenid = unknown;
                     printf("can't start with a digit! %s %d\n", S, line_nums);
                     exit(EXIT_FAILURE);
                 case -2:

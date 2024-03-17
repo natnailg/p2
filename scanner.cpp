@@ -141,7 +141,7 @@ Token Scanner(int line_nums) {
         if (nextState > 1000) {
             //inside the if statment
             if(nextChar == '\n'){
-                    nextChar = ' ';
+                    nextChar = '\0';
             }
             tokens.tokeninstance[index++] = nextChar;
             //printf("I AM HERE !!\n");
@@ -182,7 +182,7 @@ Token Scanner(int line_nums) {
 
         }else{
             state = nextState;
-            nextChar = (nextChar == '\n') ? ' ' : nextChar;
+            nextChar = (nextChar == '\n') ? '\0' : nextChar;
             tokens.tokeninstance[index++] = nextChar;
             S[S_index++] = nextChar; // Append the character to the string
             //nextChar = tokeninstances[index++]; // Read the next character from tokeninstances

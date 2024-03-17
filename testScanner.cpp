@@ -78,10 +78,10 @@ void readFromFile(char* filename) {
         S();
 
         if(tokens.tokenid == EOFtk){
-            printf("OK\n");
-        }else{
-            printf("error in the parser!!! %c------%s.\n", nextChar, tokens.tokeninstance);
-        }
+            printf("OK\n");}
+//        }else{
+//            printf("error in the parser!!! %c------%s.\n", nextChar, tokens.tokeninstance);
+//        }
 
         //printf("token found: %s--- %s--line: %d\n", tokenNames[tokens.tokenid], tokens.tokeninstance, line_nums);
 
@@ -93,7 +93,7 @@ void readFromFile(char* filename) {
 ////////////////////////////////////////////////////////////////////////
 void S() {
     if (tokens.tokenid == T2_tk) {
-        printf(" s if statment %s\n", tokenNames[tokens.tokenid]);
+        printf(" %s s if statment %s\n",  tokens.tokeninstance, tokenNames[tokens.tokenid]);
         tokens = Scanner();
         C();
         //D();
@@ -102,6 +102,6 @@ void S() {
 }
 void C(){
     if (tokens.tokenid == T2_tk){
-        printf("out of s in C if statment %s\n", tokenNames[tokens.tokenid]);
+        printf("%s out of s in C if statment %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
     }
 }

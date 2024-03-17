@@ -100,7 +100,7 @@ void S() {
         return;
     }
 }
-C(){
+void C(){
     if (tokens.tokenid == T2_tk){
         printf("out of s in C if statment %s\n", tokenNames[tokens.tokenid]);
     }

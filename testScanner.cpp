@@ -71,7 +71,8 @@ void readFromFile(char* filename) {
         nextChar = fgetc(file_pointer_filterd_file);
 
         if (nextChar == '\n') {
-            line_nums++;
+            tokens.line_num++;
+
             //printf("%d\n", line_nums);
             //      nextChar = fgetc(file_pointer_filterd_file);
             //continue;

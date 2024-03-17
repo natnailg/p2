@@ -95,7 +95,8 @@ Token Scanner() {
     int column;
 
     tokens.tokenid = unknown;
-    tokens.line_num = line_nums;
+    int line_nums = tokens.line_num;
+    //tokens.line_num = line_nums;
     memset(tokens.tokeninstance, '\0', MAX_INSTANCE_TOKEN);
 
     while(1){

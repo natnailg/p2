@@ -87,7 +87,7 @@ void S() {
     if (tokens.tokenid == T2_tk) {
         printf("1. %s s if statement %s\n",  tokens.tokeninstance, tokenNames[tokens.tokenid]);
         C();
-        //D();
+        D();
         return;
     }else{
         printf("error in function s \n");
@@ -96,14 +96,13 @@ void S() {
 // t2* -> first set of C = t2
 // predicts C -> t2*
 // processes t2
-// processes *
+// processes * not nullable so need to have error check.
 void C(){
     if (tokens.tokenid == T2_tk){
         printf("2. %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
         tokens = Scanner();
-        if(tokens.tokeninstance[0] == '*')
+        if(tokens.tokenid ==  T3_tk || tokens.tokeninstance[0] == '*')
             printf("3. %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
-
         return;
     }else{
         printf("error in function C \n");
@@ -111,7 +110,42 @@ void C(){
 }
 
 // L -> first set of D = , ,; . t2 *" ? empty
+// predict D -> L
+// processing -> ,
+// processing -> ,;
+// processing -> .
+// processing -> t2
+// processing -> *
+// processing -> "
+// processing -> ?
+// processing -> empty  it is nullable
 void D(){
+    //if(tokens.tokenid == T3_tk){
+        tokens = Scanner();
+        //L();
+        if(tokens.tokenid == (tokens.tokeninstance[0] == ',')){
+            printf("4. %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+            return;
+        }
+        else if(tokens.tokenid == ((tokens.tokeninstance[0] == ',') && (tokens.tokeninstance[1] == ';') )){
+            printf("4. %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+        }
+        else if (tokens.tokenid == (tokens.tokeninstance[0] == '.' )){
+            printf("4. %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+        }
+        else if(tokens.tokenid == T2_tk){
+            printf("4. %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+        }
+        else if(tokens.tokenid == (tokens.tokeninstance[0] == '"' )){
+            printf("4. %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+        }
+        else if(tokens.tokenid == (tokens.tokeninstance[0] == '"' )){
+            printf("4. %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+        }
+        else if(tokens.tokenid == (tokens.tokeninstance[0] == '?' )){
+            printf("4. %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+        }
+        else{ printf("empty\n"); return; }
 
 }
 

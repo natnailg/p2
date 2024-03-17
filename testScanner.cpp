@@ -94,7 +94,7 @@ void readFromFile(char* filename) {
 void S() {
     if (tokens.tokenid == T2_tk) {
         printf("1. %s s if statment %s\n",  tokens.tokeninstance, tokenNames[tokens.tokenid]);
-        tokens = Scanner();
+        //tokens = Scanner();
         C();
         //D();
         return;
@@ -105,6 +105,9 @@ void S() {
 void C(){
     if (tokens.tokenid == T2_tk){
         printf("2. %s out of s in C if statment %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+        tokens = Scanner();
+        if(tokens.tokenid ==  T3_tk)
+            printf("3. %s out of s in C if statment %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
 
         return;
     }else{

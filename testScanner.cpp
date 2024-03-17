@@ -12,7 +12,8 @@
 char nextChar;
 char T_k;
 FILE *file_pointer_filterd_file;
-
+// char input_char;
+struct Token tokens;
 //let us get rid of all the comments in, they will start with # and end with one.
 void testScanner(char *inputfile, char *outputfile) {
     FILE *input_file = fopen(inputfile, "r");
@@ -59,8 +60,7 @@ void readFromFile(char* filename) {
         return;
     }
 
-    // char input_char;
-     struct Token tokens;
+
     int line_nums = 1;
     // int index = 0; // to keep track of the current position in tokeninstance
 
@@ -75,13 +75,25 @@ void readFromFile(char* filename) {
         }
 
         tokens = Scanner(line_nums);
-        T_k = tokens.tokenid;
+        S();
 
-        printf("token found: %s--- %s--line: %d\n", tokenNames[tokens.tokenid], tokens.tokeninstance, line_nums);
-        printf("%ttttttt-- c\n", T_k);
+        if(tokens.tokenid == EOFtk){
+            printf("OK\n");
+        }else{
+            printf("error in the parser!!!.\n");
+        }
+
+        //printf("token found: %s--- %s--line: %d\n", tokenNames[tokens.tokenid], tokens.tokeninstance, line_nums);
+
 
     } while (nextChar != EOF);
 
     fclose(file_pointer_filterd_file);
 }
-
+////////////////////////////////////////////////////////////////////////
+void S(){
+    if(tokens.tokenid ==  T2_tk ){
+        printf("toke in S: %s\n", tokens.tokenid);
+    }
+    printf("out of s if statment %s\n", tokenNames[tokens.tokenid]);
+}

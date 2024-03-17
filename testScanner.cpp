@@ -14,6 +14,8 @@ char T_k;
 FILE *file_pointer_filterd_file;
 // char input_char;
 struct Token tokens;
+
+
 //let us get rid of all the comments in, they will start with # and end with one.
 void testScanner(char *inputfile, char *outputfile) {
     FILE *input_file = fopen(inputfile, "r");
@@ -76,11 +78,10 @@ void readFromFile(char* filename) {
 
         tokens = Scanner(line_nums);
         S();
-
         if(tokens.tokenid == EOFtk){
             printf("OK\n");
         }else{
-            printf("error in the parser!!!.\n");
+            printf("error in the parser!!! %c------%s.\n", nextChar, tokens.tokeninstance);
         }
 
         //printf("token found: %s--- %s--line: %d\n", tokenNames[tokens.tokenid], tokens.tokeninstance, line_nums);

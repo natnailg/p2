@@ -66,9 +66,10 @@ void readFromFile(char* filename) {
     int line_nums = 1;
     // int index = 0; // to keep track of the current position in tokeninstance
 
-    do{
+    //do{
 
         nextChar = fgetc(file_pointer_filterd_file);
+
         if (nextChar == '\n') {
             line_nums++;
             //printf("%d\n", line_nums);
@@ -78,6 +79,7 @@ void readFromFile(char* filename) {
 
         tokens = Scanner(line_nums);
         S();
+
         if(tokens.tokenid == EOFtk){
             printf("OK\n");
         }else{
@@ -87,7 +89,7 @@ void readFromFile(char* filename) {
         //printf("token found: %s--- %s--line: %d\n", tokenNames[tokens.tokenid], tokens.tokeninstance, line_nums);
 
 
-    } while (nextChar != EOF);
+    // } while (nextChar != EOF);
 
     fclose(file_pointer_filterd_file);
 }

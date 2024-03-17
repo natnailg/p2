@@ -93,15 +93,21 @@ void readFromFile(char* filename) {
 ////////////////////////////////////////////////////////////////////////
 void S() {
     if (tokens.tokenid == T2_tk) {
-        printf(" %s s if statment %s\n",  tokens.tokeninstance, tokenNames[tokens.tokenid]);
+        printf("1. %s s if statment %s\n",  tokens.tokeninstance, tokenNames[tokens.tokenid]);
         tokens = Scanner();
         C();
         //D();
         return;
+    }else{
+        printf("error in funstion s \n");
     }
 }
 void C(){
     if (tokens.tokenid == T2_tk){
-        printf("%s out of s in C if statment %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+        printf("2. %s out of s in C if statment %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+
+        return;
+    }else{
+        printf("error in funstion C \n");
     }
 }

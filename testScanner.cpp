@@ -133,9 +133,9 @@ void D(){
         else if (tokens.tokenid == (tokens.tokeninstance[0] == '.' )){
             printf("4. %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
         }
-        else if(tokens.tokenid == T2_tk){
-            printf("4. %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
-        }
+        //else if(tokens.tokenid == T2_tk){
+         //   printf("4. %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+       // }
         else if(tokens.tokenid == (tokens.tokeninstance[0] == '"' )){
             printf("4. %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
         }

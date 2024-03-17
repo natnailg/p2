@@ -74,7 +74,7 @@ void readFromFile(char* filename) {
             line_nums++;
             //printf("%d\n", line_nums);
             //      nextChar = fgetc(file_pointer_filterd_file);
-            continue;
+            //continue;
         }
 
         tokens = Scanner(line_nums);

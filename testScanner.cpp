@@ -10,7 +10,7 @@
 #include "testScanner.h"
 //Global vars
 char nextChar;
-char T_k
+char T_k;
 FILE *file_pointer_filterd_file;
 
 //let us get rid of all the comments in, they will start with # and end with one.

@@ -121,7 +121,7 @@ void C(){
 // processing -> empty  it is nullable
 void D(){
     //if(tokens.tokenid == T3_tk){
-        tokens = Scanner();
+//        tokens = Scanner();
         //L();
         if(tokens.tokenid == (tokens.tokeninstance[0] == ',')){
             printf("4.1 %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);

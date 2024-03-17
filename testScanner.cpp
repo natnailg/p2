@@ -76,8 +76,9 @@ void readFromFile(char* filename) {
 
         tokens = Scanner(line_nums);
         T_k = tokens.tokenid;
+
         printf("token found: %s--- %s--line: %d\n", tokenNames[tokens.tokenid], tokens.tokeninstance, line_nums);
-        printf("%c\n", T_k);
+        printf("%ttttttt-- c\n", T_k);
 
     } while (nextChar != EOF);
 

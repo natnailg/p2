@@ -124,26 +124,26 @@ void D(){
         tokens = Scanner();
         //L();
         if(tokens.tokenid == (tokens.tokeninstance[0] == ',')){
-            printf("4. %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+            printf("4.1 %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
             return;
         }
         else if(tokens.tokenid == ((tokens.tokeninstance[0] == ',') && (tokens.tokeninstance[1] == ';') )){
-            printf("4. %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+            printf("4.2 %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
         }
         else if (tokens.tokenid == (tokens.tokeninstance[0] == '.' )){
-            printf("4. %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+            printf("4.3 %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
         }
         //else if(tokens.tokenid == T2_tk){
          //   printf("4. %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
        // }
         else if(tokens.tokenid == (tokens.tokeninstance[0] == '"' )){
-            printf("4. %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+            printf("4.4 %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
         }
         else if(tokens.tokenid == (tokens.tokeninstance[0] == '"' )){
-            printf("4. %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+            printf("4.5 %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
         }
         else if(tokens.tokenid == (tokens.tokeninstance[0] == '?' )){
-            printf("4. %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+            printf("4.6 %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
         }
         else{ printf("empty\n"); return; }
 

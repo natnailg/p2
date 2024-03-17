@@ -13,5 +13,6 @@ void testScanner(char *, char  *); //remove comments and write to new file.
 
 extern FILE *file_pointer_filterd_file;
 extern int line_nums;
+extern char T_k;
 
 #endif

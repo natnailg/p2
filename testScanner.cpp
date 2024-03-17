@@ -68,17 +68,18 @@ void readFromFile(char* filename) {
         nextChar = fgetc(file_pointer_filterd_file);
         if (nextChar == '\n') {
             line_nums++;
-            printf("%d\n", line_nums);
+            //printf("%d\n", line_nums);
             //      nextChar = fgetc(file_pointer_filterd_file);
             continue;
         }
 
         tokens = Scanner(line_nums);
-
+        T_k = tokens.tokenid;
         printf("token found: %s--- %s--line: %d\n", tokenNames[tokens.tokenid], tokens.tokeninstance, line_nums);
+        printf("%c\n", T_k);
 
-        //Scannertest(line_nums);
     } while (nextChar != EOF);
 
     fclose(file_pointer_filterd_file);
 }
+

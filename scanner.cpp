@@ -84,7 +84,7 @@ void Scannertest(int line_nums){
 
 
 // the scanner will find the token for each of the characters using the table
-Token Scanner(int line_nums) {
+Token Scanner() {
 
     int state = 0;
     struct Token tokens;

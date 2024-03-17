@@ -22,7 +22,7 @@ const int WHITESPACE = 10;
 const int END_OF_FILE = 11;
 
 int mapingchar(char ); //mapping switch statement
-Token Scanner(int );
+Token Scanner( );
 void Scannertest(int);
 void printtokens();
 

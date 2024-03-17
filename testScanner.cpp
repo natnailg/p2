@@ -62,13 +62,7 @@ void readFromFile(char* filename) {
         return;
     }
 
-
-    int line_nums = 1;
-    // int index = 0; // to keep track of the current position in tokeninstance
-
-    //do{
-
-        nextChar = fgetc(file_pointer_filterd_file);
+    nextChar = fgetc(file_pointer_filterd_file);
 
         if (nextChar == '\n') {
             tokens.line_num++;
@@ -85,32 +79,39 @@ void readFromFile(char* filename) {
 
         //printf("token found: %s--- %s--line: %d\n", tokenNames[tokens.tokenid], tokens.tokeninstance, line_nums);
 
-
-    // } while (nextChar != EOF);
-
     fclose(file_pointer_filterd_file);
 }
 ////////////////////////////////////////////////////////////////////////
+// CD  -> first set of S = t2
 void S() {
     if (tokens.tokenid == T2_tk) {
-        printf("1. %s s if statment %s\n",  tokens.tokeninstance, tokenNames[tokens.tokenid]);
-        //tokens = Scanner();
+        printf("1. %s s if statement %s\n",  tokens.tokeninstance, tokenNames[tokens.tokenid]);
         C();
         //D();
         return;
     }else{
-        printf("error in funstion s \n");
+        printf("error in function s \n");
     }
 }
+// t2* -> first set of C = t2
+// predicts C -> t2*
+// processes t2
+// processes *
 void C(){
     if (tokens.tokenid == T2_tk){
-        printf("2. %s out of s in C if statment %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+        printf("2. %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
         tokens = Scanner();
-        if(tokens.tokenid ==  T3_tk)
-            printf("3. %s out of s in C if statment %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+        if(tokens.tokeninstance[0] == '*')
+            printf("3. %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
 
         return;
     }else{
-        printf("error in funstion C \n");
+        printf("error in function C \n");
     }
 }
+
+// L -> first set of D = , ,; . t2 *" ? empty
+void D(){
+
+}
+

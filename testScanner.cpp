@@ -97,6 +97,7 @@ void readFromFile(char* filename) {
 void S() {
     if (tokens.tokenid == T2_tk) {
         printf(" s if statment %s\n", tokenNames[tokens.tokenid]);
+        tokens = Scanner(line_nums);
         C();
         //D();
         return;

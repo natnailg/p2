@@ -120,7 +120,7 @@ void B(){
         if(tokens.tokenid == T2_tk){    // process t2
             tokens = Scanner(); // consume t2
             A(); //Process A
-            if(tokens.tokenid == tokens.tokeninstance[0] == '!'){
+            if(tokens.tokenid == (tokens.tokeninstance[0] == '!')){
                 tokens = Scanner();
                 return;
             }else{ printf("error in function S \n");}
@@ -214,7 +214,7 @@ void E(){
         H(); // Process H
         return;
     }
-    else if(tokens.tokenid == (tokens.tokeninstance[0] == ',' && tokens.tokeninstance[1] == ';')){
+    else if(tokens.tokenid == (tokens.tokeninstance[0] == ',') && tokens.tokenid == ( tokens.tokeninstance[1] == ';')){
         tokens = Scanner(); // process ,;
         F(); // process F
         H(); // Process H

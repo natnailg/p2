@@ -127,7 +127,7 @@ void D(){
             tokens = Scanner();
             return;
         }
-        else if(tokens.tokenid == ((tokens.tokeninstance[0] == ',') && (tokens.tokeninstance[1] == ';') )){
+        else if(tokens.tokenid == ((tokens.tokeninstance[0] == ',') && (tokens.tokeninstance[1] == ';'))){
             printf("D 1.2 %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
             tokens = Scanner();
             return;
@@ -172,6 +172,19 @@ void D(){
 // processing -> ?
 // processing -> empty  it is nullable
 void H(){
+    if (tokens.tokenid == ((tokens.tokeninstance[0] == ',') && tokens.tokenid == (tokens.tokeninstance[1] == ';')) || tokens.tokenid == (tokens.tokenid == (tokens.tokeninstance[0] == ','))) {
+        printf("H 1.1 %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+        tokens = Scanner();
+        if(tokens.tokenid == (tokens.tokeninstance[0] == '?')){
+            printf("H 1.2 %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+            tokens = Scanner();
+        }
+        return;
+    }
+    else if(tokens.tokenid == (tokens.tokeninstance[0] == '.')){
+
+
+    }else {printf("H: 1.7 empty\n"); return; }
 
 }
 

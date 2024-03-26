@@ -207,7 +207,7 @@ void D(){
 // process F
 // Process H
 void E(){
-    if(tokens.tokenid == tokens.tokeninstance[0] == ','){
+    if(tokens.tokenid == (tokens.tokeninstance[0] == ',')){
         tokens = Scanner(); // process ,
         A(); // process A
         A(); // process A

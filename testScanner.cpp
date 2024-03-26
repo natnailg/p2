@@ -124,27 +124,54 @@ void D(){
         //L();
         if(tokens.tokenid == (tokens.tokeninstance[0] == ',')){
             printf("D 1.1 %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+            tokens = Scanner();
             return;
         }
         else if(tokens.tokenid == ((tokens.tokeninstance[0] == ',') && (tokens.tokeninstance[1] == ';') )){
             printf("D 1.2 %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+            tokens = Scanner();
+            return;
         }
         else if (tokens.tokenid == (tokens.tokeninstance[0] == '.' )){
             printf("D 1.3 %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+            tokens = Scanner();
+            return;
         }
         else if(tokens.tokenid == T2_tk){
             printf("4. %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+            tokens = Scanner();
+            return;
         }
         else if(tokens.tokenid == (tokens.tokeninstance[0] == '"' )){
             printf("D 1.4 %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+            tokens = Scanner();
+            return;
         }
         else if(tokens.tokenid == (tokens.tokeninstance[0] == '"' )){
             printf("D 1.5%s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+            tokens = Scanner();
+            return;
         }
         else if(tokens.tokenid == (tokens.tokeninstance[0] == '?' )){
             printf("D 1.6 %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+            tokens = Scanner();
+            return;
         }
         else{ printf("D: 1.7 empty\n"); return; }
+}
+
+// grammer H-> E?|G.|empty
+// first sets of H -> , ,; | . t2 * " | empty
+// predict H ->
+// processing -> ,
+// processing -> ,;
+// processing -> .
+// processing -> t2
+// processing -> *
+// processing -> "
+// processing -> ?
+// processing -> empty  it is nullable
+void H(){
 
 }
 

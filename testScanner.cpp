@@ -144,7 +144,7 @@ void D(){
         else if(tokens.tokenid == (tokens.tokeninstance[0] == '?' )){
             printf("D 1.6 %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
         }
-        else{ printf("empty\n"); return; }
+        else{ printf("D: 1.7 empty\n"); return; }
 
 }
 

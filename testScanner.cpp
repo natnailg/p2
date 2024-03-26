@@ -82,15 +82,15 @@ void readFromFile(char* filename) {
     fclose(file_pointer_filterd_file);
 }
 ////////////////////////////////////////////////////////////////////////
-// CD  -> first set of S = t2
+// grammer = CD  then we have first set of S = t2
 void S() {
     if (tokens.tokenid == T2_tk) {
-        printf("1. %s s if statement %s\n",  tokens.tokeninstance, tokenNames[tokens.tokenid]);
+        printf("S. %s s if statement %s\n",  tokens.tokeninstance, tokenNames[tokens.tokenid]);
         C();
         D();
         return;
     }else{
-        printf("error in function s \n");
+        printf("error in function S \n");
     }
 }
 // t2* -> first set of C = t2
@@ -99,17 +99,16 @@ void S() {
 // processes * not nullable so need to have error check.
 void C(){
     if (tokens.tokenid == T2_tk){
-        printf("2. %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+        printf("C 1.1. %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
         tokens = Scanner();
         if(tokens.tokenid ==  T3_tk || tokens.tokeninstance[0] == '*')
-            printf("3. %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+            printf("C 1.2. %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
         return;
     }else{
         printf("error in function C \n");
     }
 }
-
-// L -> first set of D = , ,; . t2 *" ? empty
+// grammer D first set -> , ,; . t2 *" ? empty
 // predict D -> L
 // processing -> ,
 // processing -> ,;
@@ -124,28 +123,29 @@ void D(){
 //        tokens = Scanner();
         //L();
         if(tokens.tokenid == (tokens.tokeninstance[0] == ',')){
-            printf("4.1 %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+            printf("D 1.1 %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
             return;
         }
         else if(tokens.tokenid == ((tokens.tokeninstance[0] == ',') && (tokens.tokeninstance[1] == ';') )){
-            printf("4.2 %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+            printf("D 1.2 %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
         }
         else if (tokens.tokenid == (tokens.tokeninstance[0] == '.' )){
-            printf("4.3 %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+            printf("D 1.3 %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
         }
-        //else if(tokens.tokenid == T2_tk){
-         //   printf("4. %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
-       // }
-        else if(tokens.tokenid == (tokens.tokeninstance[0] == '"' )){
-            printf("4.4 %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+        else if(tokens.tokenid == T2_tk){
+            printf("4. %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
         }
         else if(tokens.tokenid == (tokens.tokeninstance[0] == '"' )){
-            printf("4.5 %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+            printf("D 1.4 %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+        }
+        else if(tokens.tokenid == (tokens.tokeninstance[0] == '"' )){
+            printf("D 1.5%s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
         }
         else if(tokens.tokenid == (tokens.tokeninstance[0] == '?' )){
-            printf("4.6 %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+            printf("D 1.6 %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
         }
         else{ printf("empty\n"); return; }
 
 }
+
 

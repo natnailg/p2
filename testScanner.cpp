@@ -142,7 +142,7 @@ void D(){
             tokens = Scanner();
             return;
         }
-        else if(tokens.tokenid == (tokens.tokeninstance[0] == '"' )){
+        else if(tokens.tokenid == (tokens.tokeninstance[0] == '*' )){
             printf("D 1.4 %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
             tokens = Scanner();
             return;

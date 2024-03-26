@@ -21,5 +21,11 @@ void A(); // FK -> first set of A = t1 t2
 void B(); // .t2A! -> first set of B = .
 void C(); // t2* -> first set of C = t2
 void D(); // L -> first set of D = , ,; . t2 *" ? empty
-
+void E();
+void F();
+void G();
+void H();
+void J();
+void K();
+void L();
 #endif

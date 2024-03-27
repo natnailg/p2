@@ -377,6 +377,7 @@ void L(){
         (tokens.tokeninstance[0] == '*' && tokens.tokeninstance[1] == '"') ||
         (tokens.tokeninstance[0] == '?') ||
          tokens.tokenid == T2_tk ){
+
         H(); //call H
         printf("L 1.1 instance %s tk id %s { ,; , . *\" } \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
         //tokens = Scanner(); // consumes the fist of H
@@ -386,9 +387,10 @@ void L(){
             tokens = Scanner(); //consumes ?
             L();                // processing L
             return;
+            printf("Hello\n");
         }else{ printf("L 1.3 ERROR!!\n"); }
     }
-    else{printf("L: 1.2 empty\n"); return;
+    else{printf("L/D: 1.2 empty\n"); return;
     }
 }
 

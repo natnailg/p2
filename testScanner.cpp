@@ -135,10 +135,12 @@ void C(){
     if (tokens.tokenid == T2_tk){
         printf("C 1.1. instance %s tk id %s { t2 }\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
         tokens = Scanner(); // process/consume T2
-
+        printf("C 1.2 instance %s tk id %s --consumed--{ t2 }\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
         if(tokens.tokenid ==  T3_tk && tokens.tokeninstance[0] == '*'){ // process *
-            printf("C 1.2. instance %s tk id %s { * }\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+            printf("C 1.3. instance %s tk id %s { * }\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
             tokens = Scanner(); // T3 or *
+            printf("C 1.4. instance %s tk id %s consumed{ * }\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+
             return;
 
         }else{printf("error in function C \n");}
@@ -158,45 +160,8 @@ void C(){
 void D(){
     //if(tokens.tokenid == T3_tk){
 //        tokens = Scanner();
-    printf("D 1.2. instance %s tk id %s { }\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+    printf("D 1.1. instance %s tk id %s {called from S with token2}\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
         L();
-
-//        if(tokens.tokenid == (tokens.tokeninstance[0] == ',')){
-//            printf("D 1.1 %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
-//            tokens = Scanner();
-//            return;
-//        }
-//        else if(tokens.tokenid == ((tokens.tokeninstance[0] == ',') && (tokens.tokeninstance[1] == ';'))){
-//            printf("D 1.2 %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
-//            tokens = Scanner();
-//            return;
-//        }
-//        else if (tokens.tokenid == (tokens.tokeninstance[0] == '.' )){
-//            printf("D 1.3 %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
-//            tokens = Scanner();
-//            return;
-//        }
-//        else if(tokens.tokenid == T2_tk){
-//            printf("4. %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
-//            tokens = Scanner();
-//            return;
-//        }
-//        else if(tokens.tokenid == (tokens.tokeninstance[0] == '*' )){
-//            printf("D 1.4 %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
-//            tokens = Scanner();
-//            return;
-//        }
-//        else if(tokens.tokenid == (tokens.tokeninstance[0] == '"' )){
-//            printf("D 1.5%s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
-//            tokens = Scanner();
-//            return;
-//        }
-//        else if(tokens.tokenid == (tokens.tokeninstance[0] == '?' )){
-//            printf("D 1.6 %s out of s in C if statement %s\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
-//            tokens = Scanner();
-//            return;
-//        }
-//        else{ printf("D: 1.7 empty\n"); return; }
 }
 
 // production rule E -> , A A H | . ; F H
@@ -212,6 +177,7 @@ void E(){
     if(tokens.tokeninstance[0] == ','){
         printf("E 1.1. instance %s tk id %s { , }\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
         tokens = Scanner(); // process ,
+        printf("E 1.1. instance %s tk id %s { , }\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
         A(); // process A
         A(); // process A
         H(); // Process H
@@ -252,19 +218,19 @@ void F(){
 
 void G(){
     if(tokens.tokeninstance[0] == '.'){
-        printf("G 1.2. instance %s tk id %s { . }\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+        printf("G 1.1. instance %s tk id %s { . }\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
         //tokens = Scanner(); //consume .????????????????????????????????
         B();
         return;
     }
     else if(tokens.tokeninstance[0] == '*' && tokens.tokeninstance[1] == '"'){
-        printf("G 1.2. instance %s tk id %s { *\"}\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+        printf("G 1.1. instance %s tk id %s { *\"}\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
         //tokens = Scanner(); //consume *" ??????????????????????
         J();
         return;
     }
     else if(tokens.tokenid == T2_tk){
-        printf("G 1.2. instance %s tk id %s { t2 }\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+        printf("G 1.3. instance %s tk id %s { t2 }\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
         //tokens = Scanner(); //consume t2 >??????????????????????????????
         C();
 
@@ -282,8 +248,7 @@ void G(){
 // predict empty
 // return empty
 void H(){
-    if (tokens.tokeninstance[0] == ',' ||
-     (tokens.tokeninstance[0] == ',' && tokens.tokeninstance[1] == ';')) {
+    if (tokens.tokeninstance[0] == ',') {
         E(); // process
         printf("H 1.1.1 instance %s tk id %s { , }\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
         tokens = Scanner(); // consume , ????????????????????????????????
@@ -297,7 +262,7 @@ void H(){
     else if(tokens.tokeninstance[0] == '.' ||
         tokens.tokenid == T2_tk ||
         (tokens.tokeninstance[0] == '*' && tokens.tokeninstance[1] == '"')){ // predicts . or t2 or * or "
-
+        tokens = Scanner(); //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         printf("H 1.2.1 instance %s tk id %s { . t2 *\" } \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
         G();
        //tokens = Scanner(); // consumes . or t2 or *"?????????????????????????????

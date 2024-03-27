@@ -262,7 +262,7 @@ void H(){
     else if(tokens.tokeninstance[0] == '.' ||
         tokens.tokenid == T2_tk ||
         (tokens.tokeninstance[0] == '*' && tokens.tokeninstance[1] == '"')){ // predicts . or t2 or * or "
-        tokens = Scanner(); //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        //tokens = Scanner(); //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         printf("H 1.2.1 instance %s tk id %s { . t2 *\" } \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
         G();
        //tokens = Scanner(); // consumes . or t2 or *"?????????????????????????????

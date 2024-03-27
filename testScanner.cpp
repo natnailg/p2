@@ -118,7 +118,7 @@ void B(){
             printf("B 1.2 instance %s  tk id: %s { t2 }\n",  tokens.tokeninstance, tokenNames[tokens.tokenid]);
             tokens = Scanner(); // consume t2
             A(); //Process A
-            if(tokens.tokenid == (tokens.tokeninstance[0] == '!')){
+            if(tokens.tokeninstance[0] == '!'){
                 printf("B 1.3 instance %s  tk id: %s { ! }\n",  tokens.tokeninstance, tokenNames[tokens.tokenid]);
                 tokens = Scanner(); //consume !
                 return;
@@ -346,8 +346,8 @@ void L(){
         H(); //call H
 
         printf("L 1.1 instance %s tk id %s { ,; , . *\" } \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
-        tokens = Scanner(); // consumes the fist of H ( for test 2 if i didn't consume it it was throwing an error);
-        printf("L 1.1 instance %s tk id %s after consuming ? { ,; , . *\" } \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+        //tokens = Scanner(); // consumes the fist of H ( for test 2 if i didn't consume it it was throwing an error);
+        //printf("L 1.1 instance %s tk id %s after consuming ? { ,; , . *\" } \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
 
         if(tokens.tokeninstance[0] == '?') { //process ?
             printf("L 1.2 instance %s tk id %s { ? } \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);

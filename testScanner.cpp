@@ -258,7 +258,7 @@ void H(){
             return;
 
         }else{ printf("L 1.3 ERROR!!\n"); }
-    }
+    }///
     else if(tokens.tokeninstance[0] == '.' ||
         tokens.tokenid == T2_tk ||
         (tokens.tokeninstance[0] == '*' && tokens.tokeninstance[1] == '"')){ // predicts . or t2 or * or "

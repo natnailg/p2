@@ -379,10 +379,11 @@ void L(){
          tokens.tokenid == T2_tk ){
 //
         H(); //call H
-        printf("L 1.1 instance %s tk id %s { ,; , . *\" } \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
-        tokens = Scanner(); // consumes the fist of H ( for test 2 if i didn't consume it it was throwing an error);
 
-        if(tokens.tokenid == (tokens.tokeninstance[0] == '?')) { //process ?
+        printf("L 1.1 instance %s tk id %s { ,; , . *\" } \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+        //tokens = Scanner(); // consumes the fist of H ( for test 2 if i didn't consume it it was throwing an error);
+
+        if(tokens.tokeninstance[0] == '?') { //process ?
             printf("L 1.2 instance %s tk id %s { ? } \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
             tokens = Scanner(); //consumes ?
             L();
@@ -394,5 +395,6 @@ void L(){
     }
     else{printf("L/D: 1.2 empty\n"); return;
     }
+
 }
 

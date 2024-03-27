@@ -385,7 +385,9 @@ void L(){
         if(tokens.tokenid == (tokens.tokeninstance[0] == '?')) { //process ?
             printf("K 1.2 instance %s tk id %s { ? } \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
             tokens = Scanner(); //consumes ?
-            L();                // processing L
+            L();
+            printf("K 1.2.1instance %s tk id %s { ? } \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+// processing L
             return;
             printf("Hello\n");
         }else{ printf("L 1.3 ERROR!!\n"); }

@@ -347,6 +347,7 @@ void L(){
 
         printf("L 1.1 instance %s tk id %s { ,; , . *\" } \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
         tokens = Scanner(); // consumes the fist of H ( for test 2 if i didn't consume it it was throwing an error);
+        printf("L 1.1 instance %s tk id %s after consuming ? { ,; , . *\" } \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
 
         if(tokens.tokeninstance[0] == '?') { //process ?
             printf("L 1.2 instance %s tk id %s { ? } \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
@@ -357,9 +358,8 @@ void L(){
             return;
             printf("Hello\n");
         }else{ printf("L 1.3 ERROR!!\n"); }
-    }
-    else{printf("L/D: 1.2 empty\n"); return;
-    }
+
+    }else{printf("L/D: 1.2 empty\n"); return;}
 
 }
 

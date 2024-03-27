@@ -380,7 +380,7 @@ void L(){
 //
         H(); //call H
         printf("L 1.1 instance %s tk id %s { ,; , . *\" } \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
-        //tokens = Scanner(); // consumes the fist of H
+        tokens = Scanner(); // consumes the fist of H
 
         if(tokens.tokenid == (tokens.tokeninstance[0] == '?')) { //process ?
             printf("K 1.2 instance %s tk id %s { ? } \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);

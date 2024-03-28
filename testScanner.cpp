@@ -67,9 +67,9 @@ void readFromFile(char* filename) {
     if (nextChar == '\n') {
         tokens.line_num++;
     }
-
+    printf("1.1 froms readfromFile: %s \n", tokens.tokeninstance);
     tokens = Scanner();
-    printf("froms readfromFile: %s \n", tokens.tokeninstance);
+    printf("1.2 froms readfromFile: %s \n", tokens.tokeninstance);
     S(); // call FUNCTION S
 
     if(tokens.tokenid == EOFtk){ printf("OK\n");}

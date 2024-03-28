@@ -89,27 +89,20 @@ void S() {
     if (tokens.tokenid == T2_tk) {
         //tokens = Scanner(); // consume t2
         printf("S. %s s if statement %s\n",  tokens.tokeninstance, tokenNames[tokens.tokenid]);
-        C();
+        C(); // call C
         D();
         return;
+
     }else{ printf("error in function S \n");}
 }
-// production A-> FK     // first of A -> t1 | t2
-// predict T1 or T2 (first OF F)
-// predict
-// this just calls the functions?
+// production A-> FK     // first of A -> t1 | t2 // predict T1 or T2 (first OF F) // predict // this just calls the functions?
 void A(){
         F();
         K();
         printf("A. %s  if id: %s\n",  tokens.tokeninstance, tokenNames[tokens.tokenid]);
 }
 
-//B->.t2A! first set B-> .
-//prediction  .
-//process t2
-//process A
-//process !
-//??????????????????????????????????????????????????? WHY TOKEN3?
+//B->.t2A! first set B-> . //prediction  . //process t2 //process  //process !
 void B(){
     if(tokens.tokenid == (tokens.tokeninstance[0] == '.')) {
         printf("B 1.1 instance %s  tk id: %s { . }\n",  tokens.tokeninstance, tokenNames[tokens.tokenid]);
@@ -132,6 +125,7 @@ void B(){
 // processes t2
 // processes * not nullable so need to have error check.
 void C(){
+
     if (tokens.tokenid == T2_tk){
         printf("C 1.1. instance %s tk id %s { t2 }\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
         tokens = Scanner(); // process/consume T2
@@ -265,7 +259,7 @@ void H(){
     else if(tokens.tokeninstance[0] == '.' ||
         tokens.tokenid == T2_tk ||
         (tokens.tokeninstance[0] == '*' && tokens.tokeninstance[1] == '"')){ // predicts . or t2 or * or "
-        //tokens = Scanner(); //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        tokens = Scanner(); //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         printf("H 1.2.1 instance %s tk id %s { . t2 *\" } \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
         G();
        //tokens = Scanner(); // consumes . or t2 or *"?????????????????????????????

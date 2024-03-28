@@ -130,7 +130,7 @@ void C(){
         if(tokens.tokeninstance[0] == '*'){
             printf("3.C token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
             tokens = Scanner();
-            printf("2.C token instance { %s } token Id %s consumed ( * )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+            printf("4.C token instance { %s } token Id %s consumed ( * )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
             return;
 
         }else{ printf("C1. ERROR\n");}
@@ -195,7 +195,7 @@ void G(){
         C();
         return;
     }
-    else if(tokens.tokeninstance[0] == '*' and tokens.tokeninstance[1] == ';'){
+    else if(tokens.tokeninstance[0] == '*' && tokens.tokeninstance[1] == '"'){
         printf("3.G token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
         J();
         return;
@@ -225,7 +225,7 @@ void H(){
         if (tokens.tokeninstance[0] == '.' && tokens.tokenid == T3_tk){
             printf("5.H token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
             tokens = Scanner();
-            printf("6.H token instance { %s } token Id %s consumed ( . | t2 | *\" )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+            printf("6.H token instance { %s } token Id %s consumed ( . )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
 
             return;
         }else{printf("2.H ERROR\n");}

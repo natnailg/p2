@@ -10,7 +10,6 @@
 #include "testScanner.h"
 //Global vars
 char nextChar;
-char T_k;
 FILE *file_pointer_filterd_file;
 // char input_char;
 struct Token tokens;
@@ -70,6 +69,7 @@ void readFromFile(char* filename) {
     }
 
     tokens = Scanner();
+    printf("froms readfromFile: %s \n", tokens.tokeninstance);
     S(); // call FUNCTION S
 
     if(tokens.tokenid == EOFtk){ printf("OK\n");}

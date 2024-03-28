@@ -111,6 +111,7 @@ Token Scanner() {
 
         //      printf("entering: nextchar: %c, column: %d, state: %d, nextstate: %d, line_nums: %d, line_num_tk: %d\n", nextChar, column, state, nextState, line_nums,tokens.line_num);
 
+        printf("2.1 froms readfromFile: %s \n", tokens.tokeninstance);
 
         if (nextState < 0) {
             tokens.tokeninstance[index++] = nextChar;
@@ -141,6 +142,7 @@ Token Scanner() {
         }//end of error if sttment
 
         if (nextState > 1000) {
+            printf("2.2 froms readfromFile: %s \n", tokens.tokeninstance);
             //inside the if statment
             if(nextChar == '\n'){
                     nextChar = ' ';
@@ -183,12 +185,16 @@ Token Scanner() {
             memset(S, '\0', strlen(S));
 
         }else{
+            printf("2.3 froms readfromFile: %s \n", tokens.tokeninstance);
+
             state = nextState;
             nextChar = (nextChar == '\n') ? ' ' : nextChar;
             tokens.tokeninstance[index++] = nextChar;
             S[S_index++] = nextChar; // Append the character to the string
             //nextChar = tokeninstances[index++]; // Read the next character from tokeninstances
             nextChar = fgetc(file_pointer_filterd_file);
+            printf("2.4froms readfromFile: %s \n", tokens.tokeninstance);
+
 
         }
 

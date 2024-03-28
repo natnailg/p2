@@ -73,9 +73,9 @@ void readFromFile(char* filename) {
     S(); // call FUNCTION S
 
     if(tokens.tokenid == EOFtk){ printf("OK\n");}
-//        }else{
-//            printf("error in the parser!!! %c------%s.\n", nextChar, tokens.tokeninstance);
-//        }
+    else{
+        printf("error in the parser!!! %c------%s.\n", nextChar, tokens.tokeninstance);
+    }
 
         //printf("token found: %s--- %s--line: %d\n", tokenNames[tokens.tokenid], tokens.tokeninstance, line_nums);
 

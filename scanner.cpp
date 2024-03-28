@@ -147,7 +147,7 @@ Token Scanner() {
             if(nextChar == '\n'){
                     nextChar = ' ';
             }
-            tokens.tokeninstance[index++] = nextChar;
+            //tokens.tokeninstance[index++] = nextChar;
             //printf("I AM HERE !!\n");
             S[S_index++] = nextChar;
             switch (nextState) {

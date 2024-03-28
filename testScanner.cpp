@@ -61,6 +61,7 @@ void readFromFile(char* filename) {
         printf("Error opening file.\n");
         return;
     }
+    memset(tokens.tokeninstance, '\0', MAX_INSTANCE_TOKEN);
 
     nextChar = fgetc(file_pointer_filterd_file);
 
@@ -129,11 +130,13 @@ void C(){
     if (tokens.tokenid == T2_tk){
         printf("C 1.1. instance %s tk id %s { t2 }\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
         tokens = Scanner(); // process/consume T2
+
         printf("C 1.2 instance %s tk id %s --consumed--{ t2 }\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+
         if(tokens.tokenid ==  T3_tk && tokens.tokeninstance[0] == '*'){ // process *
             printf("C 1.3. instance %s tk id %s { * }\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
             tokens = Scanner(); // T3 or *
-            printf("C 1.4. instance %s tk id %s consumed{ * }\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+           // printf("C 1.4. instance %s tk id %s consumed{ * }\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
 
             return;
 
@@ -259,10 +262,10 @@ void H(){
     else if(tokens.tokeninstance[0] == '.' ||
         tokens.tokenid == T2_tk ||
         (tokens.tokeninstance[0] == '*' && tokens.tokeninstance[1] == '"')){ // predicts . or t2 or * or "
-        tokens = Scanner(); //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        //tokens = Scanner(); //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         printf("H 1.2.1 instance %s tk id %s { . t2 *\" } \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
         G();
-       //tokens = Scanner(); // consumes . or t2 or *"?????????????????????????????
+       //tokens = Scanner(); // consumes . or t2 or *" ?????????????????????????????
         if(tokens.tokenid == (tokens.tokeninstance[0] == '.')) { // process .
             printf("H 1.2.2 instance %s tk id %s { . } \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
             tokens = Scanner(); // consume .
@@ -270,7 +273,7 @@ void H(){
 
         }else{ printf("H 1.3.1 ERROR!!\n"); }
 
-        }else { printf("H: 1.3 empty\n"); return; }
+    }else { printf("H: 1.3 empty\n"); return; }
 
 }
 

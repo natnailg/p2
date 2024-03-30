@@ -13,7 +13,7 @@
 //}node_t;
 
 typedef struct node_t{
-    int data; // the value of the node
+    char Label; // the value of the node (label of the functions)
     struct node_t* left; // pointer to the left node
     struct node_t* right; // pointer to the right
 }node_t;

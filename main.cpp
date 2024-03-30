@@ -6,6 +6,10 @@
 #include <stdlib.h>
 #include "token.h"
 #include "testScanner.h"
+
+#include "BuildTree.h"
+#include "TreeNode.h"
+
 int main(int argc, char* argv[]){
 
     //reading from keyboard
@@ -57,6 +61,11 @@ int main(int argc, char* argv[]){
 // call the filter function in testscanner and sending it a file to write the filtered version to.
     char* outputfile = "output";
     testScanner(Readin, outputfile);
+
+    //trying something real quick
+    node_t* root = readFromFile("output_file.txt");
+
+    printAST(root, 0);
 
     //remove(outputfile); // removing the file created that is filtered.
 //      printtokens();

@@ -10,6 +10,7 @@
 #include "testScanner.h"
 #include "BuildTree.h"
 #include "TreeNode.h"
+
 //Global vars
 char nextChar;
 FILE *file_pointer_filterd_file;
@@ -102,6 +103,86 @@ node_t* S(){
     return P;
 }
 
+// C -> t2 * (first set of C = T2)
+node_t* C(){
+    node_t* P = createNode('C');
+
+    if(tokens.tokenid == T2_tk){
+        printf("1.C token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+
+        tokens = Scanner();
+        printf("2.C token instance { %s } token Id %s consumed ( t2 )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+
+        if(tokens.tokeninstance[0] == '*'){
+            printf("3.C token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+            tokens = Scanner();
+            printf("4.C token instance { %s } token Id %s consumed ( * )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+            return P;
+
+        }else{ printf("C1. ERROR\n");}
+    }else{ printf("C2. ERROR\n");}
+}
+
+//D -> L (first set of D = , ,; . t2 *" ? epsilon
+node_t* D(){
+    node_t* P = createNode('D');
+    P-> left = L();
+    printf("D. called L\n");
+    return P;
+}
+node_t* H(){
+    node_t* P = createNode('H');
+    if(tokens.tokenid == T3_tk && tokens.tokeninstance[0] == ','){
+        printf("1.H token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+        //P -> left = E();
+
+        if(tokens.tokeninstance[0] == '?'){
+            printf("2.H token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+            tokens = Scanner();
+            printf("3.H token instance { %s } token Id %s consumed ( ? )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+
+            return P;
+        }else{printf("1.H ERROR\n");}
+
+    }else if(tokens.tokeninstance[0] == '.' || tokens.tokenid == T2_tk ||
+             (tokens.tokeninstance[0] == '*' && tokens.tokeninstance[1] == '"')){
+        printf("5.H token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+        //G();
+
+
+        if (tokens.tokeninstance[0] == '.' && tokens.tokenid == T3_tk){
+            printf("5.H token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+            tokens = Scanner();
+            printf("6.H token instance { %s } token Id %s consumed ( . )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+
+            return P;
+        }else{printf("2.H ERROR\n");}
+
+    }else{ printf("H.7 EMPTY\n"); return P;}
+}
+
+node_t* L(){
+    node_t* P = createNode('L');
+    if(tokens.tokenid == T2_tk || (tokens.tokenid == T3_tk && (tokens.tokeninstance[0] == ',' || (tokens.tokeninstance[0] == ',' && tokens.tokeninstance[1] == ';') ||
+                                                               tokens.tokeninstance[0] == '.' || (tokens.tokeninstance[0] == '*' && tokens.tokeninstance[1] == '"') || tokens.tokeninstance[0] == '?'))){
+
+        P-> left = H();
+
+        if (tokens.tokeninstance[0] == '?'){
+            printf("1.L token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+
+            tokens = Scanner();
+
+            printf("2.L token instance { %s } token Id %s consumed ( ? )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+
+            P-> left = L();
+
+            return P;
+        }else{printf("1.L ERROR\n"); }
+
+    }else{ printf("3.L EMPTY\n"); }
+}
+
 // A->FK (we will just call those functions, First set of A = t1 t2)
 /*
 node_t* A(){
@@ -137,6 +218,7 @@ node_t* B(){
     }else{ printf("B3. ERROR\n");}
 }
 */
+/*
 // C -> t2 * (first set of C = T2)
 node_t* C(){
     node_t* P = createNode('C');
@@ -163,7 +245,7 @@ node_t* D(){
     P-> left = L();
     printf("D. called L\n");
     return P;
-}
+}*/
 //
 //E -> , A A H | ,; F H (first set of E = , | ,;
 /*
@@ -228,7 +310,7 @@ node_t* G(){
 
 // why dont we consume here in t3
 // H-> E? | G. | empty (first set of H = , ,; | . t2 *" | empty
-
+/*
 node_t* H(){
     node_t* P = createNode('H');
     if(tokens.tokenid == T3_tk && tokens.tokeninstance[0] == ','){
@@ -259,6 +341,7 @@ node_t* H(){
 
     }else{ printf("H.7 EMPTY\n"); return P;}
 }
+ */
 //
 // J-> *" A . (first set of J = *"
 /*
@@ -302,6 +385,7 @@ node_t* K(){
     else{printf("2.J ERROR\n"); return; }
 }
 */
+/*
 //L-> H?L | empty (first set of L = , ,; . t2 *" ?
 node_t* L(){
     node_t* P = createNode('L');
@@ -326,7 +410,7 @@ node_t* L(){
 }
 
 
-
+*/
 
 
 

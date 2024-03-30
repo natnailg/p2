@@ -103,13 +103,14 @@ node_t* S(){
 }
 
 // A->FK (we will just call those functions, First set of A = t1 t2)
+/*
 node_t* A(){
     node_t* P = createNode('S');
     P-> left  = F();
     P-> right = K();
     printf("1. End of A non-terminal\n");
     return  P;
-}
+}*/
 //
 // B-> . t2 A ! (first set of B = . )
 /*
@@ -155,6 +156,7 @@ node_t* C(){
         }else{ printf("C1. ERROR\n");}
     }else{ printf("C2. ERROR\n");}
 }
+
 //D -> L (first set of D = , ,; . t2 *" ? epsilon
 node_t* D(){
     node_t* P = createNode('D');

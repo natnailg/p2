@@ -95,12 +95,14 @@ node_t* readFromFile(char* filename) {
 
         //printf("token found: %s--- %s--line: %d\n", tokenNames[tokens.tokenid], tokens.tokeninstance, line_nums);
 
-    //fclose(file_pointer_filterd_file);
+    //fclose(file_pointer_filterd_file)
 
     return root;
+
 }
 ////////////////////////////////////////////////////////////////////////
 //S-CD (we just call those functions, First set of S = t2)
+
 node_t* S(){
     node_t* P = createNode('S');
 
@@ -110,6 +112,7 @@ node_t* S(){
     printf("1. End of S non-terminal\n");
     printf("1.1 Value of P: %p, Left: %p, Right: %p\n", (void*)P, (void*)(P->left), (void*)(P->right)); // Print P, left, and right
     return P;
+
 }
 
 // C -> t2 * (first set of C = T2)
@@ -118,16 +121,16 @@ node_t* C(){
     printf("1.2 Value of P: %p, Left: %p, Right: %p\n", (void*)P, (void*)(P->left), (void*)(P->right)); // Print P, left, and right
 
     if(tokens.tokenid == T2_tk){
-        printf("1.C token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+       // printf("1.C token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
         printf("1.3 Value of P: %p, Left: %p, Right: %p\n", (void*)P, (void*)(P->left), (void*)(P->right)); // Print P, left, and right
 
         tokens = Scanner();
-        printf("2.C token instance { %s } token Id %s consumed ( t2 )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+       // printf("2.C token instance { %s } token Id %s consumed ( t2 )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
 
         if(tokens.tokeninstance[0] == '*'){
-            printf("3.C token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+           // printf("3.C token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
             tokens = Scanner();
-            printf("4.C token instance { %s } token Id %s consumed ( * )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+           // printf("4.C token instance { %s } token Id %s consumed ( * )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
             printf("1.4 Value of P: %p, Left: %p, Right: %p\n", (void*)P, (void*)(P->left), (void*)(P->right)); // Print P, left, and right
             return P;
 
@@ -141,7 +144,7 @@ node_t* D(){
     node_t* P = createNode('D');
 
     P-> left = L();
-    printf("D. called L\n");
+    //printf("D. called L\n");
     printf("1.5 Value of P: %p, Left: %p, Right: %p\n", (void*)P, (void*)(P->left), (void*)(P->right)); // Print P, left, and right
 
     return P;
@@ -149,27 +152,33 @@ node_t* D(){
 node_t* H(){
     node_t* P = createNode('H');
     if(tokens.tokenid == T3_tk && tokens.tokeninstance[0] == ','){
-        printf("1.H token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+        //printf("1.H token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
         //P -> left = E();
+        printf("1.10 Value of P: %p, Left: %p, Right: %p\n", (void*)P, (void*)(P->left), (void*)(P->right)); // Print P, left, and right
 
         if(tokens.tokeninstance[0] == '?'){
-            printf("2.H token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+            //printf("2.H token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
             tokens = Scanner();
-            printf("3.H token instance { %s } token Id %s consumed ( ? )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+          //  printf("3.H token instance { %s } token Id %s consumed ( ? )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+            printf("1.11 Value of P: %p, Left: %p, Right: %p\n", (void*)P, (void*)(P->left), (void*)(P->right)); // Print P, left, and right
 
             return P;
         }else{printf("1.H ERROR\n");}
 
     }else if(tokens.tokeninstance[0] == '.' || tokens.tokenid == T2_tk ||
              (tokens.tokeninstance[0] == '*' && tokens.tokeninstance[1] == '"')){
-        printf("5.H token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+        //printf("5.H token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
         //G();
+
+        printf("1.12 Value of P: %p, Left: %p, Right: %p\n", (void*)P, (void*)(P->left), (void*)(P->right)); // Print P, left, and right
 
 
         if (tokens.tokeninstance[0] == '.' && tokens.tokenid == T3_tk){
-            printf("5.H token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+           // printf("5.H token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
             tokens = Scanner();
-            printf("6.H token instance { %s } token Id %s consumed ( . )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+          //  printf("6.H token instance { %s } token Id %s consumed ( . )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+
+            printf("1.13 Value of P: %p, Left: %p, Right: %p\n", (void*)P, (void*)(P->left), (void*)(P->right)); // Print P, left, and right
 
             return P;
         }else{printf("2.H ERROR\n");}
@@ -181,17 +190,23 @@ node_t* L(){
     node_t* P = createNode('L');
     if(tokens.tokenid == T2_tk || (tokens.tokenid == T3_tk && (tokens.tokeninstance[0] == ',' || (tokens.tokeninstance[0] == ',' && tokens.tokeninstance[1] == ';') ||
                                                                tokens.tokeninstance[0] == '.' || (tokens.tokeninstance[0] == '*' && tokens.tokeninstance[1] == '"') || tokens.tokeninstance[0] == '?'))){
+        printf("1.6 Value of P: %p, Left: %p, Right: %p\n", (void*)P, (void*)(P->left), (void*)(P->right)); // Print P, left, and right
 
-        P-> left = H();
+        P->left = H();
+
+        printf("1.7 Value of P: %p, Left: %p, Right: %p\n", (void*)P, (void*)(P->left), (void*)(P->right)); // Print P, left, and right
 
         if (tokens.tokeninstance[0] == '?'){
-            printf("1.L token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+            //printf("1.L token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+            printf("1.8Value of P: %p, Left: %p, Right: %p\n", (void*)P, (void*)(P->left), (void*)(P->right)); // Print P, left, and right
 
             tokens = Scanner();
 
-            printf("2.L token instance { %s } token Id %s consumed ( ? )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+            // printf("2.L token instance { %s } token Id %s consumed ( ? )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
 
-            P-> left = L();
+            P->left = L();
+
+            printf("1.9 Value of P: %p, Left: %p, Right: %p\n", (void*)P, (void*)(P->left), (void*)(P->right)); // Print P, left, and right
 
             return P;
         }else{printf("1.L ERROR\n"); }

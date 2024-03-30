@@ -57,7 +57,7 @@ void testScanner(char *inputfile, char *outputfile) {
 
 
     fclose(input_file);
-
+    fclose(output_file);
 
     node_t* root = readFromFile(outputfile); //passing the char array not the file pointer
     if (root == NULL) {
@@ -75,7 +75,7 @@ void testScanner(char *inputfile, char *outputfile) {
     // Free the memory allocated for the root node
     freeNode(root);
 
-    fclose(output_file);
+
 }
 
 

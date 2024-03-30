@@ -137,12 +137,12 @@ node_t* C(){
 
 //D -> L (first set of D = , ,; . t2 *" ? epsilon
 node_t* D(){
-    printf("1.5 Value of P: %p, Left: %p, Right: %p\n", (void*)P, (void*)(P->left), (void*)(P->right)); // Print P, left, and right
 
     node_t* P = createNode('D');
+
     P-> left = L();
     printf("D. called L\n");
-    printf("1.6 Value of P: %p, Left: %p, Right: %p\n", (void*)P, (void*)(P->left), (void*)(P->right)); // Print P, left, and right
+    printf("1.5 Value of P: %p, Left: %p, Right: %p\n", (void*)P, (void*)(P->left), (void*)(P->right)); // Print P, left, and right
 
     return P;
 }

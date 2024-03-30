@@ -46,13 +46,14 @@ void printAST(node_t* root, int depth) {
 }
 
 
-
-
-
-
-
-
-
+void freeNode(node_t* node) {
+    if (node == NULL) {
+        return;
+    }
+    freeNode(node->left);
+    freeNode(node->right);
+    free(node);
+}
 
 
 

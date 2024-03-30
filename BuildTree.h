@@ -13,5 +13,6 @@ struct node_t* insertNode(struct node_t* root, char value); //
 
 void printAST(node_t* root, int depth);
 
+void freeNode(node_t* node);
 
 #endif //P2_BUILDTREE_H

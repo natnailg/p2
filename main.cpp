@@ -65,6 +65,7 @@ int main(int argc, char* argv[]){
     //remove(outputfile); // removing the file created that is filtered.
 //      printtokens();
 //
+
     node_t* root = readFromFile(outputfile); //passing the char array not the file pointer
 
     if (root == NULL) {
@@ -82,6 +83,8 @@ int main(int argc, char* argv[]){
     // Free the memory allocated for the root node
 
     free(root);
+
+    freeNode(root);
 
     return 0;
 

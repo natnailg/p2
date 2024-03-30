@@ -18,15 +18,6 @@ FILE *file_pointer_filterd_file;
 // char input_char;
 struct Token tokens;
 
-void freeNode(node_t* node) {
-    if (node == NULL) {
-        return;
-    }
-    freeNode(node->left);
-    freeNode(node->right);
-    free(node);
-}
-
 //let us get rid of all the comments in, they will start with # and end with one.
 void testScanner(char *inputfile, char *outputfile) {
     FILE *input_file = fopen(inputfile, "r");

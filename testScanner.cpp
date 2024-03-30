@@ -50,13 +50,21 @@ void testScanner(char *inputfile, char *outputfile) {
     fclose(input_file);
     fclose(output_file);
 
-    readFromFile(outputfile); //passing the char array not the file pointer
+    node_t* root = readFromFile(outputfile); //passing the char array not the file pointer
+    if (root == NULL) {
+        printf("Failed to create abstract syntax tree.\n");
+        return;
+    }
+    // Print the abstract syntax tree (AST)
+    printf("Abstract Syntax Tree:\n");
+    printAST(root, 0);
 
 }
 
 
 // reading from the file and setting the nextchar as the global variable.
 node_t* readFromFile(char* filename) {
+
     node_t* root = NULL;
     file_pointer_filterd_file = fopen(filename, "r"); // Open the file in read mode
     if (file_pointer_filterd_file == NULL) {
@@ -73,9 +81,8 @@ node_t* readFromFile(char* filename) {
 
     //node_t* root;  // the root of our root tree
 
-    printf("1.1 froms readfromFile: %s \n", tokens.tokeninstance);
     tokens = Scanner();
-    printf("1.2 froms readfromFile: %s \n", tokens.tokeninstance);
+
 
     root = S(); // call FUNCTION S
 
@@ -84,6 +91,7 @@ node_t* readFromFile(char* filename) {
     }else{
         printf("error in the parser!!! %c------%s.\n", nextChar, tokens.tokeninstance);
     }
+
 
         //printf("token found: %s--- %s--line: %d\n", tokenNames[tokens.tokenid], tokens.tokeninstance, line_nums);
 

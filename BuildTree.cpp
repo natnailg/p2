@@ -5,13 +5,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//#include "TreeNode.h"
 #include "BuildTree.h"
+#include "TreeNode.h"
 
 //function to create a new node for the binary tree
-struct node_t* createNode(char Label){
+node_t* createNode(char label){
     //allocate memo for new node
-    struct node_t* new_Node = (struct node_t*)malloc(sizeof(struct node_t));
+    struct node_t* new_Node = (struct node_t*)malloc(sizeof(node_t));
     //check to see if mem allocation was successful
     if(new_Node == NULL){
         printf("Error, memory allocation!\n");
@@ -19,9 +19,9 @@ struct node_t* createNode(char Label){
     }
     if (new_Node != NULL) {
         //initalize node data
-        new_Node->Label = Label;
-        new_Node->left = NULL;
-        new_Node->right = NULL;
+        new_Node->Label = label;
+        new_Node->left = NULL;          //left child
+        new_Node->right = NULL;         //right child
     }
     //return the created node
     return new_Node;
@@ -43,6 +43,17 @@ void printAST(node_t* root, int depth) {
     // Recursively print the right subtree with increased depth
     printAST(root->right, depth + 1);
 }
+
+
+
+void printtree(node_t* root){
+    printAST(root, 0);
+}
+
+
+
+
+
 
 
 

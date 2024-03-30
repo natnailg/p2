@@ -62,11 +62,6 @@ int main(int argc, char* argv[]){
     char* outputfile = "output";
     testScanner(Readin, outputfile);
 
-    //trying something real quick
-    node_t* root = readFromFile("output_file.txt");
-
-    printAST(root, 0);
-
     //remove(outputfile); // removing the file created that is filtered.
 //      printtokens();
     return 0;

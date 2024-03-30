@@ -64,7 +64,7 @@ void testScanner(char *inputfile, char *outputfile) {
         printf("Failed to create abstract syntax tree.\n");
         return;
     }
-    // Print the abstract syntax tree (AST)
+    /// Print the abstract syntax tree (AST)
     printf("Abstract Syntax Tree:\n");
 
     // Add a print statement before and after calling printAST

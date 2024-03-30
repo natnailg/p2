@@ -30,7 +30,7 @@ void testScanner(char *inputfile, char *outputfile) {
 
         if (!comments) {
             if (input_char != '#') {
-                if(input_char != '\t'|| input_char != '\n') {
+                if(input_char != '\t' && input_char != '\n' && input_char != ' ') {
                     fputc(input_char, output_file); // Write character to output file if not in a comment
                 }
             }else{ // # is encounterd we set comment to true

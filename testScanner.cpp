@@ -111,6 +111,7 @@ node_t* readFromFile(char* filename) {
 
     return root;
 
+
 }
 ////////////////////////////////////////////////////////////////////////
 //S-CD (we just call those functions, First set of S = t2)

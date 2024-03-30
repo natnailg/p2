@@ -11,7 +11,7 @@
 //function to create a new node for the binary tree
 node_t* createNode(char label){
     //allocate memo for new node
-    struct node_t* new_Node = (struct node_t*)malloc(sizeof(node_t));
+    struct node_t* new_Node = (struct node_t*)malloc(sizeof(struct node_t));
     //check to see if mem allocation was successful
     if(new_Node == NULL){
         printf("Error, memory allocation!\n");

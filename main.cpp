@@ -64,6 +64,22 @@ int main(int argc, char* argv[]){
 
     //remove(outputfile); // removing the file created that is filtered.
 //      printtokens();
+//
+    node_t* root = readFromFile(outputfile); //passing the char array not the file pointer
+
+    if (root == NULL) {
+        printf("Failed to create abstract syntax tree.\n");
+        return NULL;
+    }
+    /// Print the abstract syntax tree (AST)
+    printf("Abstract Syntax Tree:\n");
+
+    // Add a print statement before and after calling printAST
+    printf("Before printing AST.\n");
+    printAST(root, 0);
+    printf("After printing AST.\n");
+
+    // Free the memory allocated for the root node
 
 
     return 0;

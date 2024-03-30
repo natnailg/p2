@@ -59,21 +59,22 @@ void testScanner(char *inputfile, char *outputfile) {
     fclose(input_file);
     fclose(output_file);
 
-    node_t* root = readFromFile(outputfile); //passing the char array not the file pointer
-    if (root == NULL) {
-        printf("Failed to create abstract syntax tree.\n");
-        return;
-    }
-    /// Print the abstract syntax tree (AST)
-    printf("Abstract Syntax Tree:\n");
+   //readFromFile(outputfile); //passing the char array not the file pointer
 
-    // Add a print statement before and after calling printAST
-    printf("Before printing AST.\n");
-    printAST(root, 0);
-    printf("After printing AST.\n");
-
-    // Free the memory allocated for the root node
-    freeNode(root);
+//    if (root == NULL) {
+//        printf("Failed to create abstract syntax tree.\n");
+//        return;
+//    }
+//    /// Print the abstract syntax tree (AST)
+//    printf("Abstract Syntax Tree:\n");
+//
+//    // Add a print statement before and after calling printAST
+//    printf("Before printing AST.\n");
+//    printAST(root, 0);
+//    printf("After printing AST.\n");
+//
+//    // Free the memory allocated for the root node
+//    freeNode(root);
 
 
 }

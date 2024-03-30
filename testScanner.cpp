@@ -4,6 +4,7 @@
 
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 //#include "scanner.h"
 //#include "token.h"
@@ -17,6 +18,14 @@ FILE *file_pointer_filterd_file;
 // char input_char;
 struct Token tokens;
 
+void freeNode(node_t* node) {
+    if (node == NULL) {
+        return;
+    }
+    freeNode(node->left);
+    freeNode(node->right);
+    free(node);
+}
 
 //let us get rid of all the comments in, they will start with # and end with one.
 void testScanner(char *inputfile, char *outputfile) {
@@ -58,6 +67,8 @@ void testScanner(char *inputfile, char *outputfile) {
     // Print the abstract syntax tree (AST)
     printf("Abstract Syntax Tree:\n");
     printAST(root, 0);
+    // Free the memory allocated for the root node
+    freeNode(root);
 
 }
 
@@ -96,7 +107,8 @@ node_t* readFromFile(char* filename) {
         //printf("token found: %s--- %s--line: %d\n", tokenNames[tokens.tokenid], tokens.tokeninstance, line_nums);
 
     //fclose(file_pointer_filterd_file)
-
+    //added for the seg-fault
+    freeNode(root);
     return root;
 
 }
@@ -213,6 +225,9 @@ node_t* L(){
 
     }else{ printf("3.L EMPTY\n"); }
 }
+
+
+
 
 // A->FK (we will just call those functions, First set of A = t1 t2)
 /*

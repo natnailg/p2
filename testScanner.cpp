@@ -228,24 +228,25 @@ node_t* G(){
 
 // why dont we consume here in t3
 // H-> E? | G. | empty (first set of H = , ,; | . t2 *" | empty
-/*
+
 node_t* H(){
+    node_t* P = createNode('H');
     if(tokens.tokenid == T3_tk && tokens.tokeninstance[0] == ','){
         printf("1.H token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
-        E();
+        //P -> left = E();
 
         if(tokens.tokeninstance[0] == '?'){
             printf("2.H token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
             tokens = Scanner();
             printf("3.H token instance { %s } token Id %s consumed ( ? )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
 
-            return;
+            return P;
         }else{printf("1.H ERROR\n");}
 
     }else if(tokens.tokeninstance[0] == '.' || tokens.tokenid == T2_tk ||
         (tokens.tokeninstance[0] == '*' && tokens.tokeninstance[1] == '"')){
         printf("5.H token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
-        G();
+        //G();
 
 
         if (tokens.tokeninstance[0] == '.' && tokens.tokenid == T3_tk){
@@ -253,10 +254,10 @@ node_t* H(){
             tokens = Scanner();
             printf("6.H token instance { %s } token Id %s consumed ( . )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
 
-            return;
+            return P;
         }else{printf("2.H ERROR\n");}
 
-    }else{ printf("H.7 EMPTY\n"); return;}
+    }else{ printf("H.7 EMPTY\n"); return P;}
 }
 //
 // J-> *" A . (first set of J = *"

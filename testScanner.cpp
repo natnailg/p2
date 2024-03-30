@@ -57,7 +57,7 @@ void testScanner(char *inputfile, char *outputfile) {
 
 
     fclose(input_file);
-    fclose(output_file);
+
 
     node_t* root = readFromFile(outputfile); //passing the char array not the file pointer
     if (root == NULL) {
@@ -66,10 +66,16 @@ void testScanner(char *inputfile, char *outputfile) {
     }
     // Print the abstract syntax tree (AST)
     printf("Abstract Syntax Tree:\n");
+
+    // Add a print statement before and after calling printAST
+    printf("Before printing AST.\n");
     printAST(root, 0);
+    printf("After printing AST.\n");
+
     // Free the memory allocated for the root node
     freeNode(root);
 
+    fclose(output_file);
 }
 
 
@@ -80,7 +86,7 @@ node_t* readFromFile(char* filename) {
     file_pointer_filterd_file = fopen(filename, "r"); // Open the file in read mode
     if (file_pointer_filterd_file == NULL) {
         printf("Error opening file.\n");
-        return nullptr;
+        return NULL;
     }
     memset(tokens.tokeninstance, '\0', MAX_INSTANCE_TOKEN);
 

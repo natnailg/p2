@@ -101,20 +101,19 @@ node_t* readFromFile(char* filename) {
         printf("error in the parser!!! %c------%s.\n", nextChar, tokens.tokeninstance);
     }
 
-
-        //printf("token found: %s--- %s--line: %d\n", tokenNames[tokens.tokenid], tokens.tokeninstance, line_nums);
+    //printf("token found: %s--- %s--line: %d\n", tokenNames[tokens.tokenid], tokens.tokeninstance, line_nums);
 
     //fclose(file_pointer_filterd_file)
     //added for the seg-fault
 
     return root;
-
-
 }
 ////////////////////////////////////////////////////////////////////////
 //S-CD (we just call those functions, First set of S = t2)
 
 node_t* S(){
+    printf("Entering S()\n");
+
     node_t* P = createNode('S');
 
     P->left = C();
@@ -122,12 +121,16 @@ node_t* S(){
 
     printf("1. End of S non-terminal\n");
     printf("1.1 Value of P: %p, Left: %p, Right: %p\n", (void*)P, (void*)(P->left), (void*)(P->right)); // Print P, left, and right
+    printf("EXITING S()\n");
+
     return P;
 
 }
 
 // C -> t2 * (first set of C = T2)
 node_t* C(){
+    printf("Entering C()\n");
+
     node_t* P = createNode('C');
     printf("1.2 Value of P: %p, Left: %p, Right: %p\n", (void*)P, (void*)(P->left), (void*)(P->right)); // Print P, left, and right
 
@@ -143,6 +146,7 @@ node_t* C(){
             tokens = Scanner();
            // printf("4.C token instance { %s } token Id %s consumed ( * )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
             printf("1.4 Value of P: %p, Left: %p, Right: %p\n", (void*)P, (void*)(P->left), (void*)(P->right)); // Print P, left, and right
+            printf("EXITING C()\n");
             return P;
 
         }else{ printf("C1. ERROR\n");}
@@ -151,16 +155,20 @@ node_t* C(){
 
 //D -> L (first set of D = , ,; . t2 *" ? epsilon
 node_t* D(){
+    printf("Entering C()\n");
 
     node_t* P = createNode('D');
 
     P-> left = L();
     //printf("D. called L\n");
     printf("1.5 Value of P: %p, Left: %p, Right: %p\n", (void*)P, (void*)(P->left), (void*)(P->right)); // Print P, left, and right
+    printf("EXITING C()\n");
 
     return P;
 }
 node_t* H(){
+    printf("Entering H()\n");
+
     node_t* P = createNode('H');
     if(tokens.tokenid == T3_tk && tokens.tokeninstance[0] == ','){
         //printf("1.H token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
@@ -172,6 +180,7 @@ node_t* H(){
             tokens = Scanner();
           //  printf("3.H token instance { %s } token Id %s consumed ( ? )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
             printf("1.11 Value of P: %p, Left: %p, Right: %p\n", (void*)P, (void*)(P->left), (void*)(P->right)); // Print P, left, and right
+            printf("EXITING H()\n");
 
             return P;
         }else{printf("1.H ERROR\n");}
@@ -190,6 +199,7 @@ node_t* H(){
           //  printf("6.H token instance { %s } token Id %s consumed ( . )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
 
             printf("1.13 Value of P: %p, Left: %p, Right: %p\n", (void*)P, (void*)(P->left), (void*)(P->right)); // Print P, left, and right
+            printf("EXITING H()\n");
 
             return P;
         }else{printf("2.H ERROR\n");}
@@ -198,6 +208,8 @@ node_t* H(){
 }
 
 node_t* L(){
+    printf("Entering L()\n");
+
     node_t* P = createNode('L');
     if(tokens.tokenid == T2_tk || (tokens.tokenid == T3_tk && (tokens.tokeninstance[0] == ',' || (tokens.tokeninstance[0] == ',' && tokens.tokeninstance[1] == ';') ||
                                                                tokens.tokeninstance[0] == '.' || (tokens.tokeninstance[0] == '*' && tokens.tokeninstance[1] == '"') || tokens.tokeninstance[0] == '?'))){
@@ -219,10 +231,13 @@ node_t* L(){
 
             printf("1.9 Value of P: %p, Left: %p, Right: %p\n", (void*)P, (void*)(P->left), (void*)(P->right)); // Print P, left, and right
 
+            printf("EXITING L()\n");
+
             return P;
         }else{printf("1.L ERROR\n"); }
 
-    }else{ printf("3.L EMPTY\n"); }
+    }else{ printf("3.L EMPTY\n");     printf("EXITING/empty L()\n");
+        return P; }
 }
 
 

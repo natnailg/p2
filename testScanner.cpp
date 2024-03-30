@@ -104,19 +104,22 @@ node_t* readFromFile(char* filename) {
 node_t* S(){
     node_t* P = createNode('S');
 
-    P->right = C();
-    P->left = D();
+    P->left = C();
+    P->right =  D();
 
     printf("1. End of S non-terminal\n");
+    printf("1.1 Value of P: %p, Left: %p, Right: %p\n", (void*)P, (void*)(P->left), (void*)(P->right)); // Print P, left, and right
     return P;
 }
 
 // C -> t2 * (first set of C = T2)
 node_t* C(){
     node_t* P = createNode('C');
+    printf("1.2 Value of P: %p, Left: %p, Right: %p\n", (void*)P, (void*)(P->left), (void*)(P->right)); // Print P, left, and right
 
     if(tokens.tokenid == T2_tk){
         printf("1.C token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+        printf("1.3 Value of P: %p, Left: %p, Right: %p\n", (void*)P, (void*)(P->left), (void*)(P->right)); // Print P, left, and right
 
         tokens = Scanner();
         printf("2.C token instance { %s } token Id %s consumed ( t2 )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
@@ -125,6 +128,7 @@ node_t* C(){
             printf("3.C token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
             tokens = Scanner();
             printf("4.C token instance { %s } token Id %s consumed ( * )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+            printf("1.4 Value of P: %p, Left: %p, Right: %p\n", (void*)P, (void*)(P->left), (void*)(P->right)); // Print P, left, and right
             return P;
 
         }else{ printf("C1. ERROR\n");}
@@ -133,9 +137,13 @@ node_t* C(){
 
 //D -> L (first set of D = , ,; . t2 *" ? epsilon
 node_t* D(){
+    printf("1.5 Value of P: %p, Left: %p, Right: %p\n", (void*)P, (void*)(P->left), (void*)(P->right)); // Print P, left, and right
+
     node_t* P = createNode('D');
     P-> left = L();
     printf("D. called L\n");
+    printf("1.6 Value of P: %p, Left: %p, Right: %p\n", (void*)P, (void*)(P->left), (void*)(P->right)); // Print P, left, and right
+
     return P;
 }
 node_t* H(){

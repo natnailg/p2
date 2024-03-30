@@ -8,6 +8,7 @@
 //#include "scanner.h"
 //#include "token.h"
 #include "testScanner.h"
+#include "BuildTree.h"
 #include "TreeNode.h"
 //Global vars
 char nextChar;
@@ -55,11 +56,11 @@ void testScanner(char *inputfile, char *outputfile) {
 
 // reading from the file and setting the nextchar as the global variable.
 node_t* readFromFile(char* filename) {
-
+    node_t* root = NULL;
     file_pointer_filterd_file = fopen(filename, "r"); // Open the file in read mode
     if (file_pointer_filterd_file == NULL) {
         printf("Error opening file.\n");
-        return;
+        return nullptr;
     }
     memset(tokens.tokeninstance, '\0', MAX_INSTANCE_TOKEN);
 
@@ -69,40 +70,49 @@ node_t* readFromFile(char* filename) {
         tokens.line_num++;
     }
 
-    node_t* root;  // the root of our root tree
+    //node_t* root;  // the root of our root tree
 
     printf("1.1 froms readfromFile: %s \n", tokens.tokeninstance);
     tokens = Scanner();
     printf("1.2 froms readfromFile: %s \n", tokens.tokeninstance);
-    S(); // call FUNCTION S
 
-    if(tokens.tokenid == EOFtk){ printf("OK\n");}
-    else{
+    root = S(); // call FUNCTION S
+
+    if(tokens.tokenid == EOFtk){
+        printf("OK\n");
+    }else{
         printf("error in the parser!!! %c------%s.\n", nextChar, tokens.tokeninstance);
     }
 
         //printf("token found: %s--- %s--line: %d\n", tokenNames[tokens.tokenid], tokens.tokeninstance, line_nums);
 
-    fclose(file_pointer_filterd_file);
+    //fclose(file_pointer_filterd_file);
+
+    return root;
 }
 ////////////////////////////////////////////////////////////////////////
 //S-CD (we just call those functions, First set of S = t2)
 node_t* S(){
-    node_t* root;
-    root = C();
-    root = D();
+    node_t* P = createNode('S');
+
+    P->right = C();
+    P->left = D();
 
     printf("1. End of S non-terminal\n");
+    return P;
 }
 
 // A->FK (we will just call those functions, First set of A = t1 t2)
 node_t* A(){
-    F();
-    K();
+    node_t* P = createNode('S');
+    P-> left  = F();
+    P-> right = K();
     printf("1. End of A non-terminal\n");
+    return  P;
 }
 //
 // B-> . t2 A ! (first set of B = . )
+/*
 node_t* B(){
     if (tokens.tokeninstance[0] == '.'){
         printf("1.B token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
@@ -120,16 +130,19 @@ node_t* B(){
                 tokens = Scanner();
                 printf("6.B token instance { %s } token Id %s consumed ( ! )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
 
-                return;
-            }else{ printf("B1. ERROR\n");}
+                return B();
+            }else{ printf("B1. ERROR\n");  }
         }else{ printf("B2. ERROR\n");}
     }else{ printf("B3. ERROR\n");}
 }
-
+*/
 // C -> t2 * (first set of C = T2)
 node_t* C(){
+    node_t* P = createNode('C');
+
     if(tokens.tokenid == T2_tk){
         printf("1.C token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+
         tokens = Scanner();
         printf("2.C token instance { %s } token Id %s consumed ( t2 )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
 
@@ -137,20 +150,21 @@ node_t* C(){
             printf("3.C token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
             tokens = Scanner();
             printf("4.C token instance { %s } token Id %s consumed ( * )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
-            return;
+            return P;
 
         }else{ printf("C1. ERROR\n");}
     }else{ printf("C2. ERROR\n");}
 }
 //D -> L (first set of D = , ,; . t2 *" ? epsilon
 node_t* D(){
-
-    L();
+    node_t* P = createNode('D');
+    P-> left = L();
     printf("D. called L\n");
-
+    return P;
 }
 //
 //E -> , A A H | ,; F H (first set of E = , | ,;
+/*
 node_t* E(){
     if (tokens.tokeninstance[0] == ',' and tokens.tokeninstance[1] != ';'){
         printf("1.E token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
@@ -169,9 +183,10 @@ node_t* E(){
         H();
         return;
     }else{ printf("E1. ERROR\n");}
-}
+}*/
 //
 // F-> t1 | t2 (first set of F = t1 | t2)
+/*
 node_t* F(){
     if (tokens.tokenid == T1_tk){
         printf("1.F token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
@@ -187,9 +202,10 @@ node_t* F(){
         return;
 
     }else{ printf("E1. ERROR\n");}
-}
+}*/
 // why don't we consume after a token in here?
 // G -> B|C|J (fist set of G -> . | t2 | *"
+/*
 node_t* G(){
     if (tokens.tokeninstance[0] == '.'){
         printf("1.G token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
@@ -206,9 +222,11 @@ node_t* G(){
         J();
         return;
     }else{ printf("G1. ERROR\n");}
-}
+}*/
+
 // why dont we consume here in t3
 // H-> E? | G. | empty (first set of H = , ,; | . t2 *" | empty
+/*
 node_t* H(){
     if(tokens.tokenid == T3_tk && tokens.tokeninstance[0] == ','){
         printf("1.H token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
@@ -240,6 +258,7 @@ node_t* H(){
 }
 //
 // J-> *" A . (first set of J = *"
+/*
 node_t* J(){
     if (tokens.tokeninstance[0]=='*' && tokens.tokeninstance[1]=='"' && tokens.tokenid == T3_tk){
         printf("1.J token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
@@ -256,9 +275,10 @@ node_t* J(){
         }else{printf("1.J ERROR\n"); return;}
     }else{printf("2.J ERROR\n"); return; }
 
-}
+}*/
 //we don't consume?
 // K -> F ?$ | . (first set of K = t1 t2 | .
+/*
 node_t* K(){
     if (tokens.tokenid == T1_tk || tokens.tokenid == T2_tk ){
         F();
@@ -278,23 +298,55 @@ node_t* K(){
     }
     else{printf("2.J ERROR\n"); return; }
 }
-//
+*/
 //L-> H?L | empty (first set of L = , ,; . t2 *" ?
 node_t* L(){
+    node_t* P = createNode('L');
     if(tokens.tokenid == T2_tk || (tokens.tokenid == T3_tk && (tokens.tokeninstance[0] == ',' || (tokens.tokeninstance[0] == ',' && tokens.tokeninstance[1] == ';') ||
             tokens.tokeninstance[0] == '.' || (tokens.tokeninstance[0] == '*' && tokens.tokeninstance[1] == '"') || tokens.tokeninstance[0] == '?'))){
 
-            H();
+            P-> left = H();
+
             if (tokens.tokeninstance[0] == '?'){
                 printf("1.L token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
-                tokens = Scanner();
-                printf("2.L token instance { %s } token Id %s consumed ( ? )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
-                L();
-                return;
-            }else{printf("1.L ERROR\n"); return; }
 
-    }else{ printf("3.L EMPTY\n"); return;}
+                tokens = Scanner();
+
+                printf("2.L token instance { %s } token Id %s consumed ( ? )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+
+                P-> left = L();
+
+                return P;
+            }else{printf("1.L ERROR\n"); }
+
+    }else{ printf("3.L EMPTY\n"); }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

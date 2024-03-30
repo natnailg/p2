@@ -108,7 +108,7 @@ node_t* readFromFile(char* filename) {
 
     //fclose(file_pointer_filterd_file)
     //added for the seg-fault
-    freeNode(root);
+
     return root;
 
 }

@@ -257,7 +257,30 @@ node_t* E(){
         return;
     }else{ printf("E1. ERROR\n");}
 }
-*/
+*//*
+node_t* H() {
+
+    node_t *P = createNode('H');
+
+    if (tokens.tokeninstance[0] == ',' && tokens.tokenid == T3_tk) {
+        P->left = E();
+
+        if (tokens.tokenid == T3_tk && tokens.tokeninstance[0] == '?') {
+
+            node_t *H_tk_ptr = createNode(' '); //empty node for the stuff to print
+            strncpy(H_tk_ptr->token_instance, tokens.tokeninstance, MAX_INSTANCE_TOKEN);
+            P->center = H_tk_ptr;
+
+            tokens = Scanner(); //consume ?
+
+            return P;
+        } else { printf("Error\n"); }
+    } else if (tokens.tokeninstance[0] == '.' || tokens.tokenid == T2_tk ||
+               (tokens.tokeninstance[0] == '*' && tokens.tokeninstance[1] == '"')) {
+
+
+    }
+}*/
 
 node_t* H(){
     printf("Entering H()\n");
@@ -317,10 +340,11 @@ node_t* L(){
     printf("Entering L()\n");
 
     node_t* P = createNode('L'); //create the node
+    printf("1.hit here %s--- \n", tokens.tokeninstance);
 
     if(tokens.tokenid == T2_tk || (tokens.tokenid == T3_tk && (tokens.tokeninstance[0] == ',' || (tokens.tokeninstance[0] == ',' && tokens.tokeninstance[1] == ';') ||
                                                                tokens.tokeninstance[0] == '.' || (tokens.tokeninstance[0] == '*' && tokens.tokeninstance[1] == '"') || tokens.tokeninstance[0] == '?'))){
-
+        printf("1.hit here %s--- \n", tokens.tokeninstance);
        P->left = H();
         printf("hit here\n");
 

@@ -449,7 +449,7 @@ node_t* L(){
         if (tokens.tokeninstance[0] == '?'){
 
             node_t* L_token_ptr = createNode(' ');
-            L_token_ptr -> token_id = strdup(tokenNames[tokens.tokenid]); //getting token id
+           // L_token_ptr -> token_id = strdup(tokenNames[tokens.tokenid]); //getting token id
             strncpy(L_token_ptr->token_instance, tokens.tokeninstance,MAX_INSTANCE_TOKEN );
             P->center = L_token_ptr;
 

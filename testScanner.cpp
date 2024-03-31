@@ -118,7 +118,7 @@ node_t* S(){
 
     node_t* P = createNode('S');
 
-    //P->left = C();
+    P->left = C();
    // P->right =  D();
 
     printf("1. End of S non-terminal\n");
@@ -170,7 +170,7 @@ node_t* C(){
         }else{ printf("C1. ERROR\n");}
     }else{ printf("C2. ERROR\n");}
 }
-
+/*
 //D -> L (first set of D = , ,; . t2 *" ? epsilon
 node_t* D(){
     printf("Entering C()\n");

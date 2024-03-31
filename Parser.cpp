@@ -59,7 +59,7 @@ void testScanner(char *inputfile, char *outputfile) {
 // reading from the file and setting the nextchar as the global variable.
 node_t* parser(char* filename) {
 
-    node_t* root = NULL; // intialize it to NULL
+    node_t* root = NULL; // initialize it to NUll
 
     file_pointer_filterd_file = fopen(filename, "r"); // Open the file in read mode
     if (file_pointer_filterd_file == NULL) {
@@ -136,7 +136,7 @@ node_t* B(){
         if(tokens.tokenid == T2_tk){
 
             node_t*  B_tk_ptr_2 = createNode(' '); //create an empty node
-           // B_tk_ptr_2 -> token_id = tokens.tokenid;   //getting token id
+            B_tk_ptr_2 -> token_id = strdup(tokenNames[tokens.tokenid]);  //getting token id
             strncpy(B_tk_ptr_2->token_instance, tokens.tokeninstance,MAX_INSTANCE_TOKEN );
             P->center = B_tk_ptr_2;
 
@@ -147,7 +147,7 @@ node_t* B(){
             if (tokens.tokeninstance[0] == '!'){
 
                 node_t*  B_tk_ptr_3 = createNode(' '); //create an empty node
-              //  B_tk_ptr_3 -> token_id = tokens.tokenid;   //getting token id
+                B_tk_ptr_3 -> token_id = strdup(tokenNames[tokens.tokenid]);  //getting token id
                 strncpy(B_tk_ptr_3->token_instance, tokens.tokeninstance,MAX_INSTANCE_TOKEN );
                 P->far_right = B_tk_ptr_3;
 
@@ -174,7 +174,7 @@ node_t* C(){
         printf("Token Instance: %s \n", tokens.tokeninstance);
 
         node_t* c_token_ptr = createNode(' ');
-        c_token_ptr->token_id = strdup(tokenNames[tokens.tokenid]);
+        c_token_ptr->token_id = c_token_ptr->token_id = strdup(tokenNames[tokens.tokenid]);
         strncpy(c_token_ptr->token_instance, tokens.tokeninstance, MAX_INSTANCE_TOKEN);
         P->left = c_token_ptr;
         printf("!!!Token Instance: %s --%s \n", tokens.tokeninstance, c_token_ptr->token_instance );
@@ -224,7 +224,7 @@ node_t* E(){
     if (tokens.tokeninstance[0] == ',' and tokens.tokeninstance[1] != ';'){
 
         node_t* E_tk_ptr = createNode(' ');
-        //E_tk_ptr -> token_id = tokens.tokenid;   //getting token id
+        E_tk_ptr -> token_id = strdup(tokenNames[tokens.tokenid]);   //getting token id
         strncpy(E_tk_ptr->token_instance, tokens.tokeninstance,MAX_INSTANCE_TOKEN );
         P-> left = E_tk_ptr;
 
@@ -238,7 +238,7 @@ node_t* E(){
     else if (tokens.tokeninstance[0] == ',' and tokens.tokeninstance[1] == ';'){
 
         node_t* E_tk_ptr_2 = createNode(' ');
-        //E_tk_ptr_2 -> token_id = tokens.tokenid;   //getting token id
+        E_tk_ptr_2 -> token_id = strdup(tokenNames[tokens.tokenid]);   //getting token id
         strncpy(E_tk_ptr_2->token_instance, tokens.tokeninstance,MAX_INSTANCE_TOKEN );
         P-> left = E_tk_ptr_2;
 
@@ -259,7 +259,7 @@ node_t* F(){
     if (tokens.tokenid == T1_tk){
 
         node_t* F_tk_ptr = createNode(' ');
-        //F_tk_ptr -> token_id = tokens.tokenid;   //getting token id
+        F_tk_ptr -> token_id = strdup(tokenNames[tokens.tokenid]);   //getting token id
         strncpy(F_tk_ptr->token_instance, tokens.tokeninstance,MAX_INSTANCE_TOKEN );
         P-> left = F_tk_ptr;
 
@@ -271,7 +271,7 @@ node_t* F(){
     else if( tokens.tokenid == T2_tk){
 
         node_t* F_tk_ptr_2 = createNode(' ');
-        //F_tk_ptr_2 -> token_id = tokens.tokenid;   //getting token id
+        F_tk_ptr_2 -> token_id = strdup(tokenNames[tokens.tokenid]);  //getting token id
         strncpy(F_tk_ptr_2->token_instance, tokens.tokeninstance,MAX_INSTANCE_TOKEN );
         P-> left = F_tk_ptr_2;
 
@@ -449,7 +449,7 @@ node_t* L(){
         if (tokens.tokeninstance[0] == '?'){
 
             node_t* L_token_ptr = createNode(' ');
-            //L_token_ptr -> token_id = tokens.tokenid;   //getting token id
+            L_token_ptr -> token_id = strdup(tokenNames[tokens.tokenid]);   //getting token id
             strncpy(L_token_ptr->token_instance, tokens.tokeninstance,MAX_INSTANCE_TOKEN );
             P->center = L_token_ptr;
 

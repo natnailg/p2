@@ -69,7 +69,7 @@ void printAST(node_t* root, int depth) {
     else{
         //printf("%c", root->Label);
         // Print token instance if it exists
-        printf(" (%d, %s)\n", root->token_id, root->token_instance);
+        printf("(%d, %s)\n", depth*5,root->token_id, root->token_instance);
 
     }
 

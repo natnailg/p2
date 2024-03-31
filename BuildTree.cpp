@@ -61,7 +61,11 @@ void printAST(node_t* root, int depth) {
     }
 
     // Skip printing nodes with label 'X'
-    if (root->Label != 'X') {
+    if (root->Label != 'X')
+    {
+        printf("%*c%c\n", depth*4, ' ', root->Label);
+    }
+    else{
         printf("%c", root->Label);
         // Print token instance if it exists
         printf(" (Token ID: %d, Token Instance: %s)", root->token_id, root->token_instance);

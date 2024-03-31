@@ -61,13 +61,15 @@ void printAST(node_t* root, int depth) {
     printAST(root->left, depth + 1);
     }
 
+    if(root->center != NULL) {
+        printAST(root->center, depth + 1);
+    }
+
     // Recursively print the right subtree with increased depth
     if(root->right != NULL) {
         printAST(root->right, depth + 1);
     }
-    if(root->center != NULL) {
-        printAST(root->center, depth + 1);
-    }
+
     if(root->far_right != NULL) {
         printAST(root->far_right, depth + 1);
     }

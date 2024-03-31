@@ -18,6 +18,8 @@ FILE *file_pointer_filterd_file;
 // char input_char;
 struct Token tokens;
 
+char empty_String[] = "Empty";  // empty for the nullable functions
+
 //let us get rid of all the comments in, they will start with # and end with one.
 void testScanner(char *inputfile, char *outputfile) {
     FILE *input_file = fopen(inputfile, "r");
@@ -261,7 +263,7 @@ node_t* L(){
     }else{ printf("3.L EMPTY\n");  node_t* L_token_ptr = createNode(' ');
         node_t* L_token_ptr_2 = createNode(' ');
         L_token_ptr_2 -> token_id = tokens.tokenid;   //getting token id
-        strncpy(L_token_ptr_2->token_instance, tokens.tokeninstance,MAX_INSTANCE_TOKEN );
+        strncpy(L_token_ptr_2->token_instance, empty_String,MAX_INSTANCE_TOKEN );
         P->left = L_token_ptr_2;
 
         printf("EXITING/empty L()\n");

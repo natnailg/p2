@@ -69,21 +69,21 @@ void printAST(node_t* root, int depth) {
     else{
         //printf("%c", root->Label);
         // Print token instance if it exists
-        printf("(%d, %s)\n", root->token_id, root->token_instance);
+        printf("(%*d, %s)\n", depth*4, ' ', root->token_id, root->token_instance);
 
     }
 
     // Recursively print the left subtree with increased depth
     if(root->left != NULL){
-    printAST(root->left, depth + 2);
+    printAST(root->left, depth + 1);
     }
 
     // Recursively print the right subtree with increased depth
     if(root->right != NULL) {
-        printAST(root->right, depth + 4);
+        printAST(root->right, depth + 1);
     }
     if(root->center != NULL) {
-        printAST(root->center, depth + 3);
+        printAST(root->center, depth + 1);
     }
 }
 

@@ -140,8 +140,8 @@ node_t* C(){
 
         node_t* c_tokenptr = createNode(' ');
         c_tokenptr->token_id = tokens.tokenid;
-        //strncpy(c_tokenptr->token_instance, tokens.tokeninstance, MAX_INSTANCE_TOKEN);
-        sprintf(c_tokenptr->token_instance, "%s", tokens.tokeninstance);
+        strncpy(c_tokenptr->token_instance, tokens.tokeninstance, MAX_INSTANCE_TOKEN);
+        //sprintf(c_tokenptr->token_instance, "%s", tokens.tokeninstance);
 
         printf("!!!Token Instance: %s --%s \n", tokens.tokeninstance, c_tokenptr->token_instance );
 

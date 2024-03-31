@@ -138,10 +138,12 @@ node_t* C(){
        // printf("1.C token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
 
 
-        node_t* c_tokenptr = createNode(tokens.tokeninstance[0]); // Assuming tokeninstance is a character array
+        node_t* c_tokenptr = createNode(tokens.tokeninstance[0]);
+        printf("tokens.tokenid: %d\n", tokens.tokenid);
         c_tokenptr->token_id = tokens.tokenid;
         strncpy(c_tokenptr->token_instance, tokens.tokeninstance, MAX_INSTANCE_TOKEN);
         P->left = c_tokenptr;
+        printf("tokens.tokenid: %d\n", tokens.tokenid);
 
 
         tokens = Scanner();

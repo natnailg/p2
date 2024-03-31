@@ -21,7 +21,7 @@ BuildTree.o: BuildTree.cpp BuildTree.h
 	$(CC) $(CFLAGS) -c BuildTree.cpp
 
 testTree.o: testTree.cpp testTree.h
-	$(CC) $(CFLAGS) -C testTree.cpp
+	$(CC) $(CFLAGS) -c testTree.cpp
 
 clean:
 	/bin/rm -f *.o $(TARGET)

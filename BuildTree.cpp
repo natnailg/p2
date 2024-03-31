@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include "testScanner.h"
 #include "BuildTree.h"
 #include "TreeNode.h"
 
@@ -57,9 +57,9 @@ void printAST(node_t* root, int depth) {
     }
 
     // Print the current node with appropriate indentation
-    for (int i = 0; i < depth; i++) {
-        printf("  ");
-    }
+//    for (int i = 0; i < depth; i++) {
+//        printf("  ");
+//    }
 
     // Skip printing nodes with label 'X'
     if (root->Label != ' ')
@@ -69,7 +69,7 @@ void printAST(node_t* root, int depth) {
     else{
         //printf("%c", root->Label);
         // Print token instance if it exists
-        printf("%*c %d, %s\n", depth*4, ' ', root->token_id, root->token_instance);
+        printf("%*c %s, %d\n", depth*3, ' ', root->token_id, root->token_instance);
 
     }
 
@@ -104,7 +104,7 @@ void freeNode(node_t* node) {
     freeNode(node->left);
     freeNode(node->right);
     freeNode(node->center); // Free memory of the center node
-    free(node->token_instance); // Free memory of token_instance array
+    freeNode(node->far_right);
     free(node);
 }
 

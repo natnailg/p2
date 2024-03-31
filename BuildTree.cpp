@@ -25,6 +25,7 @@ node_t* createNode(char label){
         new_Node->left = NULL;          //left child
         new_Node->center =NULL;         //some have three children
         new_Node->right = NULL;         //right child
+        new_Node->far_right = NULL;     // far right child (fourth child)
         new_Node->token_instance[0] = '\0';        //token instances
     }
     //return the created node
@@ -82,7 +83,7 @@ void printAST(node_t* root, int depth) {
         printAST(root->right, depth + 1);
     }
     if(root->center != NULL) {
-        printAST(root->right, depth + 1);
+        printAST(root->center, depth + 1);
     }
 }
 

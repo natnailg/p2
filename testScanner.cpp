@@ -118,8 +118,8 @@ node_t* S(){
 
     node_t* P = createNode('S');
 
-    P->left = C();
-    P->right =  D();
+    //P->left = C();
+   // P->right =  D();
 
     printf("1. End of S non-terminal\n");
     printf("1.1 Value of P: %p, Left: %p, Right: %p\n", (void*)P, (void*)(P->left), (void*)(P->right)); // Print P, left, and right

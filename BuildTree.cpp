@@ -69,7 +69,7 @@ void printAST(node_t* root, int depth) {
         printAST(root->center, depth + 1);
     }
     if(root->far_right != NULL) {
-        printAST(root->center, depth + 1);
+        printAST(root->far_right, depth + 1);
     }
 }
 

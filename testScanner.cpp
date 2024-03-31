@@ -257,30 +257,33 @@ node_t* E(){
         return;
     }else{ printf("E1. ERROR\n");}
 }
-*//*
-node_t* H() {
+*/
+//F
+//
+node_t* G(){
 
-    node_t *P = createNode('H');
+    node_t* P = createNode('G'); //create node
 
-    if (tokens.tokeninstance[0] == ',' && tokens.tokenid == T3_tk) {
-        P->left = E();
+    if (tokens.tokeninstance[0] == '.'){
+        printf("1.G token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
 
-        if (tokens.tokenid == T3_tk && tokens.tokeninstance[0] == '?') {
+        P->left = B();
 
-            node_t *H_tk_ptr = createNode(' '); //empty node for the stuff to print
-            strncpy(H_tk_ptr->token_instance, tokens.tokeninstance, MAX_INSTANCE_TOKEN);
-            P->center = H_tk_ptr;
-
-            tokens = Scanner(); //consume ?
-
-            return P;
-        } else { printf("Error\n"); }
-    } else if (tokens.tokeninstance[0] == '.' || tokens.tokenid == T2_tk ||
-               (tokens.tokeninstance[0] == '*' && tokens.tokeninstance[1] == '"')) {
-
-
+        return P;
     }
-}*/
+    else if (tokens.tokenid == T2_tk){
+        printf("2.G token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+        P->right = C();
+        return P;
+    }
+    else if(tokens.tokeninstance[0] == '*' && tokens.tokeninstance[1] == '"'){
+        printf("3.G token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+
+        P->far_right =J();
+        return P;
+
+    }else{ printf("G1. ERROR\n");exit(EXIT_FAILURE);}
+}
 
 node_t* H(){
     printf("Entering H()\n");
@@ -309,7 +312,7 @@ node_t* H(){
              (tokens.tokeninstance[0] == '*' && tokens.tokeninstance[1] == '"')){
         //printf("5.H token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
 
-      //  P->left =G();
+        P->left =G();
 
 
         if (tokens.tokeninstance[0] == '.' && tokens.tokenid == T3_tk){

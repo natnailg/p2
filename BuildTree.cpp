@@ -61,7 +61,7 @@ void printAST(node_t* root, int depth) {
     }
 
     // Skip printing nodes with label 'X'
-    if (root->Label != 'X')
+    if (root->Label != ' ')
     {
         printf("%*c%c\n", depth*4, ' ', root->Label);
     }

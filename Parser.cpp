@@ -174,7 +174,7 @@ node_t* C(){
         printf("Token Instance: %s \n", tokens.tokeninstance);
 
         node_t* c_token_ptr = createNode(' ');
-        c_token_ptr->token_id = c_token_ptr->token_id = strdup(tokenNames[tokens.tokenid]);
+        c_token_ptr->token_id = strdup(tokenNames[tokens.tokenid]);
         strncpy(c_token_ptr->token_instance, tokens.tokeninstance, MAX_INSTANCE_TOKEN);
         P->left = c_token_ptr;
         printf("!!!Token Instance: %s --%s \n", tokens.tokeninstance, c_token_ptr->token_instance );
@@ -449,7 +449,7 @@ node_t* L(){
         if (tokens.tokeninstance[0] == '?'){
 
             node_t* L_token_ptr = createNode(' ');
-            L_token_ptr -> token_id = strdup(tokenNames[tokens.tokenid]);   //getting token id
+            L_token_ptr -> token_id = strdup(tokenNames[tokens.tokenid]); //getting token id
             strncpy(L_token_ptr->token_instance, tokens.tokeninstance,MAX_INSTANCE_TOKEN );
             P->center = L_token_ptr;
 

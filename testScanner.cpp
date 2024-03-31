@@ -297,7 +297,7 @@ node_t* F(){
         tokens = Scanner(); //consume
         return P;
 
-    }else{ printf("E1. ERROR\n");}
+    }else{ printf("E1. ERROR\n"); return NULL;}
 }
 
 node_t* G(){
@@ -322,7 +322,7 @@ node_t* G(){
         P->far_right = J();
         return P;
 
-    }else{ printf("G1. ERROR\n");exit(EXIT_FAILURE);}
+    }else{ printf("G1. ERROR\n");return NULL;}
 }
 
 node_t* H(){
@@ -346,7 +346,7 @@ node_t* H(){
             printf("EXITING H()\n");
 
             return P;
-        }else{printf("1.H ERROR\n");}
+        }else{printf("1.H ERROR\n");return NULL;}
 
     }else if(tokens.tokeninstance[0] == '.' || tokens.tokenid == T2_tk ||
              (tokens.tokeninstance[0] == '*' && tokens.tokeninstance[1] == '"')){
@@ -366,7 +366,7 @@ node_t* H(){
 
             printf("EXITING H()\n");
             return P;
-        }else{printf("2.H ERROR\n");}
+        }else{printf("2.H ERROR\n");return NULL;}
 
     }else{
         printf("H.7 EMPTY\n");
@@ -405,8 +405,8 @@ node_t* J(){
 
             return P;
 
-        }else{printf("1.J ERROR\n");} //exit(EXIT_FAILURE);}
-    }else{printf("2.J ERROR\n"); }//exit(EXIT_FAILURE); }
+        }else{printf("1.J ERROR\n");return NULL;}
+    }else{printf("2.J ERROR\n"); return NULL;}
 
 }
 //we don't consume???????? (ask prof)
@@ -441,7 +441,7 @@ node_t* K(){
 
         return P;
     }
-    else{printf("2.J ERROR\n"); }
+    else{printf("2.J ERROR\n"); return NULL;}
 }
 
 node_t* L(){
@@ -477,7 +477,7 @@ node_t* L(){
 
             return P;
 
-        }else{printf("1.L ERROR\n"); }
+        }else{printf("1.L ERROR\n");return NULL; }
 
     }else{
 

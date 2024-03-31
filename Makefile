@@ -1,7 +1,7 @@
 CC       = g++
 CFLAGS  = -g -Wall -std=c++11
 TARGET  = P2
-OBJS    = main.o Parser.o scanner.o BuildTree.o
+OBJS    = main.o Parser.o scanner.o BuildTree.o testTree.o
 
 all: $(TARGET)
 
@@ -19,6 +19,9 @@ Parser.o: scanner.cpp scanner.h
 
 BuildTree.o: BuildTree.cpp BuildTree.h
 	$(CC) $(CFLAGS) -c BuildTree.cpp
+
+testTree.o: testTree.cpp testTree.h
+	$(CC) $(CFLAGS) -C testTree.cpp
 
 clean:
 	/bin/rm -f *.o $(TARGET)

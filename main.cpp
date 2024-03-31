@@ -73,7 +73,9 @@ int main(int argc, char* argv[]){
 
     // Add a print statement before and after calling printAST
     printf("Before printing AST.\n\n");
-    printAST(root, 0);
+
+    printAST(root, 0);  //printing the tree;
+
     printf("\n\nAfter printing AST.\n");
 
     // Free the memory allocated for the root node

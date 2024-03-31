@@ -279,7 +279,7 @@ node_t* G(){
     else if(tokens.tokeninstance[0] == '*' && tokens.tokeninstance[1] == '"'){
         printf("3.G token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
 
-        P->far_right =J();
+        P->far_right = J();
         return P;
 
     }else{ printf("G1. ERROR\n");exit(EXIT_FAILURE);}

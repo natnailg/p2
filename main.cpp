@@ -77,7 +77,6 @@ int main(int argc, char* argv[]){
 
     // Free the memory allocated for the root node
 
-    free(root);
 
     freeNode(root);
     return 0;

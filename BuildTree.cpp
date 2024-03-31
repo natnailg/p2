@@ -32,69 +32,62 @@ node_t* createNode(char label){
     return new_Node;
 }
 
-
-void printAST(node_t* root, int depth) {
-    if (root == NULL) {
-        // printf("Error root is Null in PrintAST\n");
-        return;
-    }
-/*
-    // Print the current node with appropriate indentation
-    for (int i = 0; i < depth; i++) {
-        printf("  ");
-    }
-*/
-    // Skip printing nodes with label 'X'
-    if (root->Label != ' ')
-    {
-        printf("%*c%c\n", depth*3, ' ', root->Label);
-    }//
-    else{
-        //printf("%c", root->Label);
-        // Print token instance if it exists
-
-        if(root->token_id != 0){
-            //printf("%d", tokens.tokenid);
-            printf("%*c %d, %s\n", depth * 3, ' ', root->token_id, root->token_instance);
-
-        }else{
-            //printf("inside of else %d", tokens.tokenid);
-
-            printf("%*c %s\n", depth * 3, ' ', root->token_instance); // this is the only way which i can print the empty with out token being 0
-
-        }
-
-    }
-
-    // Recursively print the left subtree with increased depth
-    if(root->left != NULL){
-    printAST(root->left, depth + 1);
-    }
-
-    if(root->center != NULL) {
-        printAST(root->center, depth + 1);
-    }
-
-    // Recursively print the right subtree with increased depth
-    if(root->right != NULL) {
-        printAST(root->right, depth + 1);
-    }
-
-    if(root->far_right != NULL) {
-        printAST(root->far_right, depth + 1);
-    }
-}
-
-
-
-//void freeNode(node_t* node) {
-//    if (node == NULL) {
+//
+//void printAST(node_t* root, int depth) {
+//    if (root == NULL) {
+//        // printf("Error root is Null in PrintAST\n");
 //        return;
 //    }
-//    freeNode(node->left);
-//    freeNode(node->right);
-//    free(node);
+///*
+//    // Print the current node with appropriate indentation
+//    for (int i = 0; i < depth; i++) {
+//        printf("  ");
+//    }
+//*/
+//    // Skip printing nodes with label 'X'
+//    if (root->Label != ' ')
+//    {
+//        printf("%*c%c\n", depth*3, ' ', root->Label);
+//    }//
+//    else{
+//        //printf("%c", root->Label);
+//        // Print token instance if it exists
+//
+//        if(root->token_id != 0){
+//            //printf("%d", tokens.tokenid);
+//            printf("%*c %d, %s\n", depth * 3, ' ', root->token_id, root->token_instance);
+//
+//        }else{
+//            //printf("inside of else %d", tokens.tokenid);
+//
+//            printf("%*c %s\n", depth * 3, ' ', root->token_instance); // this is the only way which i can print the empty with out token being 0
+//
+//        }
+//
+//    }
+//
+//    // Recursively print the left subtree with increased depth
+//    if(root->left != NULL){
+//    printAST(root->left, depth + 1);
+//    }
+//
+//    if(root->center != NULL) {
+//        printAST(root->center, depth + 1);
+//    }
+//
+//    // Recursively print the right subtree with increased depth
+//    if(root->right != NULL) {
+//        printAST(root->right, depth + 1);
+//    }
+//
+//    if(root->far_right != NULL) {
+//        printAST(root->far_right, depth + 1);
+//    }
 //}
+//
+//
+
+
 void freeNode(node_t* node) {
     if (node == NULL) {
         return;

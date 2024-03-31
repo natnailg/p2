@@ -9,6 +9,7 @@
 
 #include "BuildTree.h"
 #include "TreeNode.h"
+#include "testTree.h"
 
 int main(int argc, char* argv[]){
 

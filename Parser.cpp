@@ -437,7 +437,6 @@ node_t* L(){
 
     if(tokens.tokenid == T2_tk || tokens.tokeninstance[0] == '?' || (tokens.tokenid == T3_tk && (tokens.tokeninstance[0] == ',' || (tokens.tokeninstance[0] == ',' && tokens.tokeninstance[1] == ';') ||
                                                                tokens.tokeninstance[0] == '.' || (tokens.tokeninstance[0] == '*' && tokens.tokeninstance[1] == '"')))){
-
         node_t* P = createNode('L'); //create the node
 
         printf("2.L token instance { %s } token Id %s (  )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);

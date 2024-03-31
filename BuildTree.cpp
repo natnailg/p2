@@ -32,23 +32,6 @@ node_t* createNode(char label){
     return new_Node;
 }
 
-// Function to print the abstract syntax tree (AST)
-//void printAST(node_t* root, int depth) {
-//    if (root == NULL) {
-//      //  printf("Error root is Null in PrintAST\n");
-//        return;
-//    }
-//    // Print the current node with appropriate indentation
-//    for (int i = 0; i < depth; i++) {
-//        printf("  ");
-//    }
-//    printf("%c\n", root->Label);
-//
-//    // Recursively print the left subtree with increased depth
-//    printAST(root->left, depth + 1);
-//    // Recursively print the right subtree with increased depth
-//    printAST(root->right, depth + 1);
-//}
 
 void printAST(node_t* root, int depth) {
     if (root == NULL) {
@@ -83,6 +66,9 @@ void printAST(node_t* root, int depth) {
         printAST(root->right, depth + 1);
     }
     if(root->center != NULL) {
+        printAST(root->center, depth + 1);
+    }
+    if(root->far_right != NULL) {
         printAST(root->center, depth + 1);
     }
 }

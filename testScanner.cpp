@@ -140,20 +140,26 @@ node_t* C(){
 
         node_t* c_tokenptr = createNode('X');
         c_tokenptr->token_id = tokens.tokenid;
+        //strncpy(c_tokenptr->token_instance, tokens.tokeninstance, MAX_INSTANCE_TOKEN);
         sprintf(c_tokenptr->token_instance, "%s", tokens.tokeninstance);
+
         printf("!!!Token Instance: %s --%s \n", tokens.tokeninstance, c_tokenptr->token_instance );
 
         P->left = c_tokenptr;
+        printf("tokens.tokenid: %d\n", tokens.tokenid);
+
 
         tokens = Scanner();
+       // printf("2.C token instance { %s } token Id %s consumed ( t2 )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
 
         if(tokens.tokeninstance[0] == '*'){
            // printf("3.C token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
 
-            node_t* c_tokenptr_ = createNode('X'); // creaing this node so we can skip it when printing
-            c_tokenptr_->token_id = tokens.tokenid;
-            sprintf(c_tokenptr_->token_instance, "%s", tokens.tokeninstance);
-            printf("!!!Token Instance: %s --%s \n", tokens.tokeninstance, c_tokenptr_->token_instance );
+            node_t* c_tokenptr_2 = createNode('X');
+            c_tokenptr_2 -> token_id = tokens.tokenid;   //getting token id
+            strncpy(c_tokenptr_2->token_instance, tokens.tokeninstance,MAX_INSTANCE_TOKEN );
+            P->right = c_tokenptr_2;
+
 
             tokens = Scanner();
            // printf("4.C token instance { %s } token Id %s consumed ( * )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);

@@ -193,7 +193,6 @@ node_t* C(){
         node_t* c_token_ptr = createNode(' ');
         c_token_ptr->token_id = tokens.tokenid;
         strncpy(c_token_ptr->token_instance, tokens.tokeninstance, MAX_INSTANCE_TOKEN);
-        //sprintf(c_tokenptr->token_instance, "%s", tokens.tokeninstance);
         P->left = c_token_ptr;
         printf("!!!Token Instance: %s --%s \n", tokens.tokeninstance, c_token_ptr->token_instance );
         printf("tokens.tokenid: %d---%s\n", tokens.tokenid, tokenNames[tokens.tokenid]);
@@ -355,7 +354,7 @@ node_t* J(){
 
         P->center = A();
 
-        if (tokens.tokeninstance[0] == '.'){
+        if (tokens.tokenid == T3_tk && tokens.tokeninstance[0] == '.'){
             node_t* J_tk_ptr_2 = createNode(' '); //create node
             //J_tk_ptr -> token_id = tokens.tokenid;   //getting token id
             strncpy(J_tk_ptr_2->token_instance, tokens.tokeninstance,MAX_INSTANCE_TOKEN );
@@ -365,10 +364,11 @@ node_t* J(){
 
             return P;
 
-        }else{printf("1.J ERROR\n"); exit(EXIT_FAILURE);}
-    }else{printf("2.J ERROR\n"); exit(EXIT_FAILURE); }
+        }else{printf("1.J ERROR\n");} //exit(EXIT_FAILURE);}
+    }else{printf("2.J ERROR\n"); }//exit(EXIT_FAILURE); }
 
 }
+
 node_t* L(){
     printf("Entering L()\n");
 

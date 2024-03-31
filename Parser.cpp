@@ -53,30 +53,14 @@ void testScanner(char *inputfile, char *outputfile) {
     fclose(output_file);
 
    //parser(outputfile); //passing the char array not the file pointer
-
-//    if (root == NULL) {
-//        printf("Failed to create abstract syntax tree.\n");
-//        return;
-//    }
-//    /// Print the abstract syntax tree (AST)
-//    printf("Abstract Syntax Tree:\n");
-//
-//    // Add a print statement before and after calling print_inorder_tree
-//    printf("Before printing AST.\n");
-//    print_inorder_tree(root, 0);
-//    printf("After printing AST.\n");
-//
-//    // Free the memory allocated for the root node
-//    freeNode(root);
-
-
 }
 
 
 // reading from the file and setting the nextchar as the global variable.
 node_t* parser(char* filename) {
 
-    node_t* root = NULL;
+    node_t* root = NULL; // intialize it to NULL
+
     file_pointer_filterd_file = fopen(filename, "r"); // Open the file in read mode
     if (file_pointer_filterd_file == NULL) {
         printf("Error opening file.\n");
@@ -90,7 +74,6 @@ node_t* parser(char* filename) {
         tokens.line_num++;
     }
 
-    //node_t* root;  // the root of our root tree
 
     tokens = Scanner();
 

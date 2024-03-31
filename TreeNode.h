@@ -16,7 +16,7 @@ typedef struct node_t{
     struct node_t* center;
     struct node_t* far_right;
     char token_instance[MAX_INSTANCE_TOKEN];  //printing token instance value
-    int  token_id;
+    char* token_id;
 }node_t;
 
 

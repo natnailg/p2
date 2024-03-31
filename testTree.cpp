@@ -32,7 +32,7 @@ void print_inorder_tree(node_t* root, int depth) {
 
         if(root->token_id != 0){
             //printf("%d", tokens.tokenid);
-            printf("%*c %d, %s\n", depth * 3, ' ', root->token_id, root->token_instance);
+            printf("%*c %s, %s\n", depth * 3, ' ', root->token_id, root->token_instance);
 
         }else{
             //printf("inside of else %d", tokens.tokenid);

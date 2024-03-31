@@ -119,7 +119,7 @@ node_t* S(){
     node_t* P = createNode('S');
 
     P->left = C();
-    P->right =  D();
+    P->center = D();
 
     printf("1. End of S non-terminal\n");
     printf("1.1 Value of P: %p, Left: %p, Right: %p\n", (void*)P, (void*)(P->left), (void*)(P->right)); // Print P, left, and right
@@ -128,7 +128,58 @@ node_t* S(){
     return P;
 
 }
+//
+// A->FK (we will just call those functions, First set of A = t1 t2)
+node_t* A(){
+    node_t* P = createNode('A');
+    P-> left  = F();
+    P-> center = K();
+    printf("1. End of A non-terminal\n");
+    return  P;
+}
+//
+// B-> . t2 A ! (first set of B = . )
+node_t* B(){
+    if (tokens.tokeninstance[0] == '.'){
+        node_t* P = createNode('B'); //create the node
 
+        node_t* B_token_ptr = createNode(' '); //create an empty node
+        //B_token_ptr -> token_id = tokens.tokenid;   //getting token id
+        strncpy(B_token_ptr->token_instance, tokens.tokeninstance,MAX_INSTANCE_TOKEN );
+
+        P->left = B_token_ptr;
+
+        tokens = Scanner(); //consume
+
+        if(tokens.tokenid == T2_tk){
+
+            node_t*  B_tk_ptr_2 = createNode(' '); //create an empty node
+            B_tk_ptr_2 -> token_id = tokens.tokenid;   //getting token id
+            strncpy(B_tk_ptr_2->token_instance, tokens.tokeninstance,MAX_INSTANCE_TOKEN );
+            P->center = B_tk_ptr_2;
+
+            tokens = Scanner(); //consume
+
+            P->right = A(); //call A
+
+            if (tokens.tokeninstance[0] == '!'){
+
+                node_t*  B_tk_ptr_3 = createNode(' '); //create an empty node
+                B_tk_ptr_3 -> token_id = tokens.tokenid;   //getting token id
+                strncpy(B_tk_ptr_3->token_instance, tokens.tokeninstance,MAX_INSTANCE_TOKEN );
+                P->far_right = B_tk_ptr_3;
+
+                printf("5.B token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+                tokens = Scanner();
+                printf("6.B token instance { %s } token Id %s consumed ( ! )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+
+                return P;
+
+            }else{ printf("B1. ERROR\n");  }
+        }else{ printf("B2. ERROR\n");}
+    }else{ printf("B3. ERROR\n");}
+}
+//
 // C -> t2 * (first set of C = T2)
 node_t* C(){
     printf("Entering C()\n");
@@ -171,6 +222,7 @@ node_t* C(){
     }else{ printf("C2. ERROR\n");}
 }
 
+//
 //D -> L (first set of D = , ,; . t2 *" ? epsilon
 node_t* D(){
     printf("Entering C()\n");

@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "BuildTree.h"
 #include "TreeNode.h"
@@ -20,9 +21,10 @@ node_t* createNode(char label){
     if (new_Node != NULL) {
         //initalize node data
         new_Node->Label = label;
-        new_Node->token_instance;        //token instances
+        new_Node->token_instance[0] = '\0';        //token instances
         new_Node->left = NULL;          //left child
         new_Node->right = NULL;         //right child
+        new_Node->center =NULL;         //some have three children
     }
     //return the created node
     return new_Node;

@@ -9,7 +9,7 @@
 #include "scanner.h"
 #include "TreeNode.h"
 
-node_t* readFromFile(char* file); // read from file and map
+node_t* parser(char* file); // read from file and map
 void testScanner(char *, char  *); //remove comments and write to new file.
 
 extern FILE *file_pointer_filterd_file;

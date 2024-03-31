@@ -53,7 +53,7 @@ void testScanner(char *inputfile, char *outputfile) {
 
 
 // reading from the file and setting the nextchar as the global variable.
-void readFromFile(char* filename) {
+void parser(char* filename) {
 
     file_pointer_filterd_file = fopen(filename, "r"); // Open the file in read mode
     if (file_pointer_filterd_file == NULL) {

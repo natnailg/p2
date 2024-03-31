@@ -62,7 +62,7 @@ int main(int argc, char* argv[]){
     char* outputfile = "output";
     testScanner(Readin, outputfile);
 
-    node_t* root = readFromFile(outputfile); //passing the char array not the file pointer
+    node_t* root = parser(outputfile); //passing the char array not the file pointer
     if (root == NULL) {
         printf("Failed to create abstract syntax tree.\n");
         return NULL;

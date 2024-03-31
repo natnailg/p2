@@ -262,7 +262,7 @@ node_t* L(){
 
     }else{ printf("3.L EMPTY\n");  node_t* L_token_ptr = createNode(' ');
         node_t* L_token_ptr_2 = createNode(' ');
-        L_token_ptr_2 -> token_id = tokens.tokenid;   //getting token id
+        //L_token_ptr_2 -> token_id = tokens.tokenid;   //getting token id
         strncpy(L_token_ptr_2->token_instance, empty_String,MAX_INSTANCE_TOKEN );
         P->left = L_token_ptr_2;
 

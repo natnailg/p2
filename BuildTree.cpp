@@ -57,9 +57,9 @@ void printAST(node_t* root, int depth) {
     }
 
     // Print the current node with appropriate indentation
-//    for (int i = 0; i < depth; i++) {
-//        printf("  ");
-//    }
+    for (int i = 0; i < depth; i++) {
+        printf("  ");
+    }
 
     // Skip printing nodes with label 'X'
     if (root->Label != ' ')

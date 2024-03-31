@@ -341,12 +341,16 @@ node_t* L(){
 
     node_t* P = createNode('L'); //create the node
     printf("1.hit here %s--- \n", tokens.tokeninstance);
+    printf("1.L token instance { %s } token Id %s ()\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
 
     if(tokens.tokenid == T2_tk || (tokens.tokenid == T3_tk && (tokens.tokeninstance[0] == ',' || (tokens.tokeninstance[0] == ',' && tokens.tokeninstance[1] == ';') ||
                                                                tokens.tokeninstance[0] == '.' || (tokens.tokeninstance[0] == '*' && tokens.tokeninstance[1] == '"') || tokens.tokeninstance[0] == '?'))){
-        printf("1.hit here %s--- \n", tokens.tokeninstance);
+
+        printf("2.L token instance { %s } token Id %s (  )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+
+        printf("2.hit here %s--- \n", tokens.tokeninstance);
        P->left = H();
-        printf("hit here\n");
+        printf("3. hit here\n");
 
         if (tokens.tokeninstance[0] == '?'){
 

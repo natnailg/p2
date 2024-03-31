@@ -150,11 +150,10 @@ node_t* C(){
         if(tokens.tokeninstance[0] == '*'){
            // printf("3.C token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
 
-            node_t* c_tokenptr = createNode('X'); // creaing this node so we can skip it when printing
-            c_tokenptr->token_id = tokens.tokenid;
-            sprintf(c_tokenptr->token_instance, "%s", tokens.tokeninstance);
-            printf("!!!Token Instance: %s --%s \n", tokens.tokeninstance, c_tokenptr->token_instance );
-
+            node_t* c_tokenptr_ = createNode('X'); // creaing this node so we can skip it when printing
+            c_tokenptr_->token_id = tokens.tokenid;
+            sprintf(c_tokenptr_->token_instance, "%s", tokens.tokeninstance);
+            printf("!!!Token Instance: %s --%s \n", tokens.tokeninstance, c_tokenptr_->token_instance );
 
             tokens = Scanner();
            // printf("4.C token instance { %s } token Id %s consumed ( * )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);

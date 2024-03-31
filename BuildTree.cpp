@@ -85,15 +85,24 @@ void printAST(node_t* root, int depth) {
 
 
 
+//void freeNode(node_t* node) {
+//    if (node == NULL) {
+//        return;
+//    }
+//    freeNode(node->left);
+//    freeNode(node->right);
+//    free(node);
+//}
 void freeNode(node_t* node) {
     if (node == NULL) {
         return;
     }
     freeNode(node->left);
     freeNode(node->right);
+    freeNode(node->center); // Free memory of the center node
+    free(node->token_instance); // Free memory of token_instance array
     free(node);
 }
-
 
 
 

@@ -47,18 +47,16 @@ void printAST(node_t* root, int depth) {
     // Skip printing nodes with label 'X'
     if (root->Label != ' ')
     {
-        printf("%*c%c\n", depth*4, ' ', root->Label);
+        printf("%*c%c\n", depth*3, ' ', root->Label);
     }
     else{
         //printf("%c", root->Label);
         // Print token instance if it exists
         if(tokens.tokenid == 0) {
             printf("%*c %s\n", depth * 3, ' ', root->token_instance); // this is the only way which i can print the empty with out token being 0
-        }else
-        {
+        }
+        else if(tokens.tokenid != 0){
             printf("%*c %d, %s\n", depth * 3, ' ', root->token_id, root->token_instance);
-
-
         }
 
     }

@@ -132,8 +132,8 @@ node_t* S(){
 // A->FK (we will just call those functions, First set of A = t1 t2)
 node_t* A(){
     node_t* P = createNode('A');
-    P-> left  = F();
-    P-> center = K();
+   // P-> left  = F();
+   // P-> center = K();
     printf("1. End of A non-terminal\n");
     return  P;
 }

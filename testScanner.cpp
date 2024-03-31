@@ -346,6 +346,8 @@ node_t* L(){
     if(tokens.tokenid == T2_tk || tokens.tokeninstance[0] == '?' || (tokens.tokenid == T3_tk && (tokens.tokeninstance[0] == ',' || (tokens.tokeninstance[0] == ',' && tokens.tokeninstance[1] == ';') ||
                                                                tokens.tokeninstance[0] == '.' || (tokens.tokeninstance[0] == '*' && tokens.tokeninstance[1] == '"')))){
 
+        node_t* P = createNode('L'); //create the node
+
         printf("2.L token instance { %s } token Id %s (  )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
 
         printf("2.hit here %s--- \n", tokens.tokeninstance);
@@ -366,6 +368,7 @@ node_t* L(){
             printf("EXITING L()\n");
 
             return P;
+
         }else{printf("1.L ERROR\n"); }
 
     }else{

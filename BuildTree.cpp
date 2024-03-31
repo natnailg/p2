@@ -38,12 +38,12 @@ void printAST(node_t* root, int depth) {
         // printf("Error root is Null in PrintAST\n");
         return;
     }
-
+/*
     // Print the current node with appropriate indentation
     for (int i = 0; i < depth; i++) {
         printf("  ");
     }
-
+*/
     // Skip printing nodes with label 'X'
     if (root->Label != ' ')
     {

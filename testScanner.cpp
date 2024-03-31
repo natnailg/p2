@@ -119,7 +119,7 @@ node_t* S(){
     node_t* P = createNode('S');
 
     P->left = C();
-   // P->right =  D();
+    P->right =  D();
 
     printf("1. End of S non-terminal\n");
     printf("1.1 Value of P: %p, Left: %p, Right: %p\n", (void*)P, (void*)(P->left), (void*)(P->right)); // Print P, left, and right
@@ -234,7 +234,7 @@ node_t* L(){
                                                                tokens.tokeninstance[0] == '.' || (tokens.tokeninstance[0] == '*' && tokens.tokeninstance[1] == '"') || tokens.tokeninstance[0] == '?'))){
         printf("1.6 Value of P: %p, Left: %p, Right: %p\n", (void*)P, (void*)(P->left), (void*)(P->right)); // Print P, left, and right
 
-       // P->left = H();
+       P->left = H();
 
         printf("1.7 Value of P: %p, Left: %p, Right: %p\n", (void*)P, (void*)(P->left), (void*)(P->right)); // Print P, left, and right
 

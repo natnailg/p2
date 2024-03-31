@@ -137,6 +137,7 @@ node_t* C(){
     if(tokens.tokenid == T2_tk){
        // printf("1.C token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
 
+        printf("Token Instance: %s\n", tokens.tokeninstance);
 
         node_t* c_tokenptr = createNode(tokens.tokeninstance[0]);
         printf("tokens.tokenid: %d\n", tokens.tokenid);

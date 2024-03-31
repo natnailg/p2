@@ -53,12 +53,12 @@ void printAST(node_t* root, int depth) {
         //printf("%c", root->Label);
         // Print token instance if it exists
 
-        if(tokens.tokenid != 0){
-            printf("%d", tokens.tokenid);
+        if(root->token_id != 0){
+            //printf("%d", tokens.tokenid);
             printf("%*c %d, %s\n", depth * 3, ' ', root->token_id, root->token_instance);
 
         }else{
-            printf("inside of else %d", tokens.tokenid);
+            //printf("inside of else %d", tokens.tokenid);
 
             printf("%*c %s\n", depth * 3, ' ', root->token_instance); // this is the only way which i can print the empty with out token being 0
 

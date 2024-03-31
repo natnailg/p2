@@ -308,8 +308,9 @@ node_t* H(){
         //H_tk_ptr_3 -> token_id = tokens.tokenid;   //getting token id
         strncpy(H_tk_ptr_3->token_instance, empty_String,MAX_INSTANCE_TOKEN );
         P->left = H_tk_ptr_3;
-
-        return P;}
+        printf("!!!EXITING empty H()\n");
+        return P;
+    }
 }
 
 node_t* L(){
@@ -321,6 +322,7 @@ node_t* L(){
                                                                tokens.tokeninstance[0] == '.' || (tokens.tokeninstance[0] == '*' && tokens.tokeninstance[1] == '"') || tokens.tokeninstance[0] == '?'))){
 
        P->left = H();
+        printf("hit here\n");
 
         if (tokens.tokeninstance[0] == '?'){
 

@@ -132,14 +132,13 @@ node_t* C(){
     printf("Entering C()\n");
 
     node_t* P = createNode('C');
-
-
     if(tokens.tokenid == T2_tk){
        // printf("1.C token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
 
         printf("Token Instance: %s\n", tokens.tokeninstance);
 
         node_t* c_tokenptr = createNode('X');
+
         printf("tokens.tokenid: %d\n", tokens.tokenid);
         c_tokenptr->token_id = tokens.tokenid;
         //strncpy(c_tokenptr->token_instance, tokens.tokeninstance, MAX_INSTANCE_TOKEN);

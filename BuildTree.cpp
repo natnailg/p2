@@ -20,6 +20,7 @@ node_t* createNode(char label){
     if (new_Node != NULL) {
         //initalize node data
         new_Node->Label = label;
+        new_Node->token_instance;        //token instances
         new_Node->left = NULL;          //left child
         new_Node->right = NULL;         //right child
     }

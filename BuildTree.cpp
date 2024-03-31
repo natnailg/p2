@@ -63,12 +63,9 @@ void printAST(node_t* root, int depth) {
     // Skip printing nodes with label 'X'
     if (root->Label != 'X') {
         printf("%c", root->Label);
-
         // Print token instance if it exists
-        if (strlen(root->token_instance) > 0) {
-            printf(" (Token ID: %d, Token Instance: %s)", root->token_id, root->token_instance);
-        }
-        printf("\n");
+        printf(" (Token ID: %d, Token Instance: %s)", root->token_id, root->token_instance);
+
     }
 
     // Recursively print the left subtree with increased depth

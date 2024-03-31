@@ -71,10 +71,10 @@ int main(int argc, char* argv[]){
     /// Print the abstract syntax tree (AST)
     printf("Abstract Syntax Tree:\n");
 
-    // Add a print statement before and after calling printAST
+    // Add a print statement before and after calling print_inorder_tree
     printf("Before printing AST.\n\n");
-
-    printAST(root, 0);  //printing the tree;
+    //print the inorder tree
+    print_inorder_tree(root, 0);  //printing the tree;
 
     printf("\n\nAfter printing AST.\n");
 

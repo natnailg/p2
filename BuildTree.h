@@ -11,7 +11,7 @@ struct node_t* createNode(char); // for creating a new node for tree, takes a va
 
 struct node_t* insertNode(struct node_t* root, char value); //
 
-void printAST(node_t* root, int depth);
+void print_inorder_tree(node_t* root, int depth);
 
 void freeNode(node_t* node);
 

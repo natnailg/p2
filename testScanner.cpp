@@ -338,7 +338,37 @@ node_t* H(){
         return P;
     }
 }
+//
+// J-> *" A . (first set of J = *"
+node_t* J(){
 
+    node_t* P = createNode('J'); //create node
+
+    if (tokens.tokeninstance[0]=='*' && tokens.tokeninstance[1]=='"' && tokens.tokenid == T3_tk){
+
+        node_t* J_tk_ptr= createNode(' '); //create node
+        //J_tk_ptr -> token_id = tokens.tokenid;   //getting token id
+        strncpy(J_tk_ptr->token_instance, tokens.tokeninstance,MAX_INSTANCE_TOKEN );
+        P->left = J_tk_ptr;
+
+        tokens = Scanner(); //consume
+
+        P->center = A();
+
+        if (tokens.tokeninstance[0] == '.'){
+            node_t* J_tk_ptr_2 = createNode(' '); //create node
+            //J_tk_ptr -> token_id = tokens.tokenid;   //getting token id
+            strncpy(J_tk_ptr_2->token_instance, tokens.tokeninstance,MAX_INSTANCE_TOKEN );
+            P->right = J_tk_ptr_2;
+
+            tokens = Scanner(); //consume
+
+            return P;
+
+        }else{printf("1.J ERROR\n"); exit(EXIT_FAILURE);}
+    }else{printf("2.J ERROR\n"); exit(EXIT_FAILURE); }
+
+}
 node_t* L(){
     printf("Entering L()\n");
 

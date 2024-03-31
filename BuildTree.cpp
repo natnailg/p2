@@ -48,7 +48,7 @@ void printAST(node_t* root, int depth) {
     if (root->Label != ' ')
     {
         printf("%*c%c\n", depth*3, ' ', root->Label);
-    }
+    }//
     else{
         //printf("%c", root->Label);
         // Print token instance if it exists

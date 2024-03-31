@@ -2,8 +2,8 @@
 // Created by Admin on 3/13/2024.
 //
 
-#ifndef P2_TESTSCANNER_H
-#define P2_TESTSCANNER_H
+#ifndef P2_PARSER_H
+#define P2_PARSER_H
 
 //#include "token.h"
 #include "scanner.h"

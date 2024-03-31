@@ -6,7 +6,7 @@
 #define P2_SCANNER_H
 
 #include "token.h"
-#include "testScanner.h"
+#include "Parser.h"
 
 const int LETTER = 0;
 const int DIGIT = 1;

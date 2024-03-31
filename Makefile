@@ -11,7 +11,7 @@ $(TARGET): $(OBJS)
 main.o: main.cpp
 	$(CC) $(CFLAGS) -c main.cpp
 
-scanner.o: testScanner.cpp testScanner.h
+scanner.o: Parser.cpp Parser.h
 	$(CC) $(CFLAGS) -c scanner.cpp
 
 testScanner.o: scanner.cpp scanner.h

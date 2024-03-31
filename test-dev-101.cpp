@@ -7,7 +7,7 @@
 
 //#include "scanner.h"
 //#include "token.h"
-#include "testScanner.h"
+#include "Parser.h"
 //Global vars
 char nextChar;
 FILE *file_pointer_filterd_file;

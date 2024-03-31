@@ -128,7 +128,7 @@ node_t* S(){
     return P;
 
 }
-/*
+
 // C -> t2 * (first set of C = T2)
 node_t* C(){
     printf("Entering C()\n");

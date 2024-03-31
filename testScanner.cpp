@@ -174,9 +174,9 @@ node_t* B(){
 
                 return P;
 
-            }else{ printf("B1. ERROR\n");  }
-        }else{ printf("B2. ERROR\n");}
-    }else{ printf("B3. ERROR\n");}
+            }else{ printf("B1. ERROR\n"); return NULL; }
+        }else{ printf("B2. ERROR\n");return NULL; }
+    }else{ printf("B3. ERROR\n"); return NULL;}
 }
 //
 // C -> t2 * (first set of C = T2)
@@ -205,7 +205,7 @@ node_t* C(){
            // printf("3.C token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
 
             node_t* c_tokenptr_2 = createNode(' ');
-            c_tokenptr_2 -> token_id = tokens.tokenid;   //getting token id
+           // c_tokenptr_2 -> token_id = tokens.tokenid;   //getting token id
             strncpy(c_tokenptr_2->token_instance, tokens.tokeninstance,MAX_INSTANCE_TOKEN );
             P->center = c_tokenptr_2;
 
@@ -216,8 +216,8 @@ node_t* C(){
             printf("EXITING C()\n");
             return P;
 
-        }else{ printf("C1. ERROR\n");}
-    }else{ printf("C2. ERROR\n");}
+        }else{ printf("C1. ERROR\n");return NULL;}
+    }else{ printf("C2. ERROR\n");return NULL;}
 }
 
 //
@@ -268,7 +268,7 @@ node_t* E(){
 
         return P;
 
-    }else{ printf("E1. ERROR\n");}
+    }else{ printf("E1. ERROR\n");return NULL;}
 }
 //
 // F-> t1 | t2 (first set of F = t1 | t2)

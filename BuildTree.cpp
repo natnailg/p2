@@ -23,8 +23,8 @@ node_t* createNode(char label){
         //initalize node data
         new_Node->Label = label;        // the functions
         new_Node->left = NULL;          //left child
-        new_Node->right = NULL;         //right child
         new_Node->center =NULL;         //some have three children
+        new_Node->right = NULL;         //right child
         new_Node->token_instance[0] = '\0';        //token instances
     }
     //return the created node

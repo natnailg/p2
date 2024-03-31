@@ -142,10 +142,8 @@ node_t* C(){
         c_tokenptr->token_id = tokens.tokenid;
         strncpy(c_tokenptr->token_instance, tokens.tokeninstance, MAX_INSTANCE_TOKEN);
         //sprintf(c_tokenptr->token_instance, "%s", tokens.tokeninstance);
-
-        printf("!!!Token Instance: %s --%s \n", tokens.tokeninstance, c_tokenptr->token_instance );
-
         P->left = c_tokenptr;
+        printf("!!!Token Instance: %s --%s \n", tokens.tokeninstance, c_tokenptr->token_instance );
         printf("tokens.tokenid: %d\n", tokens.tokenid);
 
 
@@ -158,7 +156,7 @@ node_t* C(){
             node_t* c_tokenptr_2 = createNode(' ');
             c_tokenptr_2 -> token_id = tokens.tokenid;   //getting token id
             strncpy(c_tokenptr_2->token_instance, tokens.tokeninstance,MAX_INSTANCE_TOKEN );
-            P->right = c_tokenptr_2;
+            P->center = c_tokenptr_2;
 
 
             tokens = Scanner();
@@ -228,7 +226,8 @@ node_t* H(){
 node_t* L(){
     printf("Entering L()\n");
 
-    node_t* P = createNode('L');
+    node_t* P = createNode('L'); //create the node
+
     if(tokens.tokenid == T2_tk || (tokens.tokenid == T3_tk && (tokens.tokeninstance[0] == ',' || (tokens.tokeninstance[0] == ',' && tokens.tokeninstance[1] == ';') ||
                                                                tokens.tokeninstance[0] == '.' || (tokens.tokeninstance[0] == '*' && tokens.tokeninstance[1] == '"') || tokens.tokeninstance[0] == '?'))){
         printf("1.6 Value of P: %p, Left: %p, Right: %p\n", (void*)P, (void*)(P->left), (void*)(P->right)); // Print P, left, and right
@@ -241,11 +240,16 @@ node_t* L(){
             //printf("1.L token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
             printf("1.8Value of P: %p, Left: %p, Right: %p\n", (void*)P, (void*)(P->left), (void*)(P->right)); // Print P, left, and right
 
+            node_t* L_token_ptr = createNode(' ');
+            L_token_ptr -> token_id = tokens.tokenid;   //getting token id
+            strncpy(L_token_ptr->token_instance, tokens.tokeninstance,MAX_INSTANCE_TOKEN );
+            P->center = L_token_ptr;
+
             tokens = Scanner();
 
             // printf("2.L token instance { %s } token Id %s consumed ( ? )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
 
-            P->left = L();
+            P->right = L();
 
             printf("1.9 Value of P: %p, Left: %p, Right: %p\n", (void*)P, (void*)(P->left), (void*)(P->right)); // Print P, left, and right
 
@@ -254,7 +258,13 @@ node_t* L(){
             return P;
         }else{printf("1.L ERROR\n"); }
 
-    }else{ printf("3.L EMPTY\n");     printf("EXITING/empty L()\n");
+    }else{ printf("3.L EMPTY\n");  node_t* L_token_ptr = createNode(' ');
+        node_t* L_token_ptr_2 = createNode(' ');
+        L_token_ptr_2 -> token_id = tokens.tokenid;   //getting token id
+        strncpy(L_token_ptr_2->token_instance, tokens.tokeninstance,MAX_INSTANCE_TOKEN );
+        P->left = L_token_ptr_2;
+
+        printf("EXITING/empty L()\n");
         return P; }
 }
 

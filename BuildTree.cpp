@@ -63,7 +63,7 @@ void printAST(node_t* root, int depth) {
     // Skip printing nodes with label 'X'
     if (root->Label != ' ')
     {
-        printf("%*c%c\n", depth*4, ' ', root->Label);
+        printf("%*c%c\n", depth*5, ' ', root->Label);
     }
     else{
         //printf("%c", root->Label);
@@ -79,6 +79,9 @@ void printAST(node_t* root, int depth) {
 
     // Recursively print the right subtree with increased depth
     if(root->right != NULL) {
+        printAST(root->right, depth + 1);
+    }
+    if(root->center != NULL) {
         printAST(root->right, depth + 1);
     }
 }

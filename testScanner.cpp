@@ -343,8 +343,8 @@ node_t* L(){
     printf("1.hit here %s--- \n", tokens.tokeninstance);
     printf("1.L token instance { %s } token Id %s ()\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
 
-    if(tokens.tokenid == T2_tk || (tokens.tokenid == T3_tk && (tokens.tokeninstance[0] == ',' || (tokens.tokeninstance[0] == ',' && tokens.tokeninstance[1] == ';') ||
-                                                               tokens.tokeninstance[0] == '.' || (tokens.tokeninstance[0] == '*' && tokens.tokeninstance[1] == '"') || tokens.tokeninstance[0] == '?'))){
+    if(tokens.tokenid == T2_tk || tokens.tokeninstance[0] == '?' || (tokens.tokenid == T3_tk && (tokens.tokeninstance[0] == ',' || (tokens.tokeninstance[0] == ',' && tokens.tokeninstance[1] == ';') ||
+                                                               tokens.tokeninstance[0] == '.' || (tokens.tokeninstance[0] == '*' && tokens.tokeninstance[1] == '"')))){
 
         printf("2.L token instance { %s } token Id %s (  )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
 

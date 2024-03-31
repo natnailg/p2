@@ -132,8 +132,8 @@ node_t* S(){
 // A->FK (we will just call those functions, First set of A = t1 t2)
 node_t* A(){
     node_t* P = createNode('A');
-   // P-> left  = F();
-   // P-> center = K();
+    P-> left  = F();
+    P-> center = K();
     printf("1. End of A non-terminal\n");
     return  P;
 }
@@ -234,31 +234,72 @@ node_t* D(){
 
     return P;
 }
-/*
+
 //
 //E -> , A A H | ,; F H (first set of E = , | ,;
 node_t* E(){
+    node_t* P = createNode('E'); //create node E
+
     if (tokens.tokeninstance[0] == ',' and tokens.tokeninstance[1] != ';'){
-        printf("1.E token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
-        tokens = Scanner();
-        printf("2.C token instance { %s } token Id %s consumed ( , )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
-        A();
-        A();
-        H();
-        return;
+
+        node_t* E_tk_ptr = createNode(' ');
+        E_tk_ptr -> token_id = tokens.tokenid;   //getting token id
+        strncpy(E_tk_ptr->token_instance, tokens.tokeninstance,MAX_INSTANCE_TOKEN );
+        P-> left = E_tk_ptr;
+
+        tokens = Scanner(); //consume
+        P-> center = A();
+        P-> right = A();
+        P-> far_right = H();
+
+        return P;
     }
     else if (tokens.tokeninstance[0] == ',' and tokens.tokeninstance[1] == ';'){
-        printf("3.E token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
-        tokens = Scanner();
-        printf("4.C token instance { %s } token Id %s consumed ( ,; )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
-        F();
-        H();
-        return;
+
+        node_t* E_tk_ptr_2 = createNode(' ');
+        E_tk_ptr_2 -> token_id = tokens.tokenid;   //getting token id
+        strncpy(E_tk_ptr_2->token_instance, tokens.tokeninstance,MAX_INSTANCE_TOKEN );
+        P-> left = E_tk_ptr_2;
+
+        tokens = Scanner(); //consume
+
+        P->left = F();
+        P->center = H();
+
+        return P;
+
     }else{ printf("E1. ERROR\n");}
 }
-*/
-//F
 //
+// F-> t1 | t2 (first set of F = t1 | t2)
+node_t* F(){
+
+    node_t* P = createNode('F'); //create node E
+    if (tokens.tokenid == T1_tk){
+
+        node_t* F_tk_ptr = createNode(' ');
+        F_tk_ptr -> token_id = tokens.tokenid;   //getting token id
+        strncpy(F_tk_ptr->token_instance, tokens.tokeninstance,MAX_INSTANCE_TOKEN );
+        P-> left = F_tk_ptr;
+
+        tokens = Scanner(); //consume
+
+        return P;
+
+    }
+    else if( tokens.tokenid == T2_tk){
+
+        node_t* F_tk_ptr_2 = createNode(' ');
+        F_tk_ptr_2 -> token_id = tokens.tokenid;   //getting token id
+        strncpy(F_tk_ptr_2->token_instance, tokens.tokeninstance,MAX_INSTANCE_TOKEN );
+        P-> left = F_tk_ptr_2;
+
+        tokens = Scanner(); //consume
+        return P;
+
+    }else{ printf("E1. ERROR\n");}
+}
+
 node_t* G(){
 
     node_t* P = createNode('G'); //create node
@@ -292,7 +333,7 @@ node_t* H(){
     if(tokens.tokenid == T3_tk && tokens.tokeninstance[0] == ','){
 
 
-       // P -> left = E();
+        P -> left = E();
 
         if(tokens.tokeninstance[0] == '?'){
 
@@ -367,6 +408,40 @@ node_t* J(){
         }else{printf("1.J ERROR\n");} //exit(EXIT_FAILURE);}
     }else{printf("2.J ERROR\n"); }//exit(EXIT_FAILURE); }
 
+}
+//we don't consume???????? (ask prof)
+// K -> F ?$ | . (first set of K = t1 t2 | .
+node_t* K(){
+    node_t* P = createNode('K'); //create node
+
+    if (tokens.tokenid == T1_tk || tokens.tokenid == T2_tk ){
+
+        P->left = F();
+
+        if (tokens.tokeninstance[0] == '?' && tokens.tokeninstance[1] == '$' && tokens.tokenid == T3_tk){
+
+            node_t* K_tk_ptr= createNode(' '); //create node
+            //J_tk_ptr -> token_id = tokens.tokenid;   //getting token id
+            strncpy(K_tk_ptr->token_instance, tokens.tokeninstance,MAX_INSTANCE_TOKEN );
+            P->center = K_tk_ptr;
+
+            tokens = Scanner();
+
+            return P;
+        }else{printf("1.J ERROR\n"); }
+    }
+    else if(tokens.tokeninstance[0] == '.'){
+
+        node_t* K_tk_ptr_2 = createNode(' '); //create node
+        //K_tk_ptr_2 -> token_id = tokens.tokenid;   //getting token id
+        strncpy(K_tk_ptr_2->token_instance, tokens.tokeninstance,MAX_INSTANCE_TOKEN );
+        P->left = K_tk_ptr_2;
+
+        tokens = Scanner();
+
+        return P;
+    }
+    else{printf("2.J ERROR\n"); }
 }
 
 node_t* L(){

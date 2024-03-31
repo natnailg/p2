@@ -140,12 +140,12 @@ node_t* C(){
 
         printf("Token Instance: %s \n", tokens.tokeninstance);
 
-        node_t* c_tokenptr = createNode(' ');
-        c_tokenptr->token_id = tokens.tokenid;
-        strncpy(c_tokenptr->token_instance, tokens.tokeninstance, MAX_INSTANCE_TOKEN);
+        node_t* c_token_ptr = createNode(' ');
+        c_token_ptr->token_id = tokens.tokenid;
+        strncpy(c_token_ptr->token_instance, tokens.tokeninstance, MAX_INSTANCE_TOKEN);
         //sprintf(c_tokenptr->token_instance, "%s", tokens.tokeninstance);
-        P->left = c_tokenptr;
-        printf("!!!Token Instance: %s --%s \n", tokens.tokeninstance, c_tokenptr->token_instance );
+        P->left = c_token_ptr;
+        printf("!!!Token Instance: %s --%s \n", tokens.tokeninstance, c_token_ptr->token_instance );
         printf("tokens.tokenid: %d\n", tokens.tokenid);
 
 
@@ -178,7 +178,6 @@ node_t* D(){
     node_t* P = createNode('D');
 
     P-> left = L();
-    //printf("D. called L\n");
     printf("1.5 Value of P: %p, Left: %p, Right: %p\n", (void*)P, (void*)(P->left), (void*)(P->right)); // Print P, left, and right
     printf("EXITING C()\n");
 

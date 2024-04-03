@@ -82,7 +82,7 @@ node_t* parser(char* filename) {
     root = S(); // call FUNCTION S
 
     if(tokens.tokenid == EOFtk){
-        printf("OK -- No Problems found, lets print the Tree\n");
+        printf("All Good OK!!\n");
     }else{
         printf("error in the parser!!! %c------%s.\n", nextChar, tokens.tokeninstance);
     }

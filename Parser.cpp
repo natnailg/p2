@@ -82,7 +82,7 @@ node_t* parser(char* filename) {
     root = S(); // call FUNCTION S
 
     if(tokens.tokenid == EOFtk){
-        printf("OK\n");
+        printf("OK -- No Problems found, lets print the Tree\n");
     }else{
         printf("error in the parser!!! %c------%s.\n", nextChar, tokens.tokeninstance);
     }
@@ -97,15 +97,15 @@ node_t* parser(char* filename) {
 
 //S-CD (we just call those functions, First set of S = t2)
 node_t* S(){
-    printf("Entering S()\n");
+    //printf("Entering S()\n");
 
     node_t* P = createNode('S');
 
     P->left = C();
     P->center = D();
 
-    printf("1. End of S non-terminal\n");
-    printf("EXITING S()\n");
+   // printf("1. End of S non-terminal\n");
+    //printf("EXITING S()\n");
 
     return P;
 
@@ -428,7 +428,7 @@ node_t* K(){
 }
 
 node_t* L(){
-    printf("Entering L()\n");
+    //printf("Entering L()\n");
 
     node_t* P = createNode('L'); //create the node
     //printf("1.hit here %s--- \n", tokens.tokeninstance);

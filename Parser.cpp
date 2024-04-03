@@ -13,12 +13,12 @@
 #include "TreeNode.h"
 
 //Global vars
-char nextChar;
-FILE *file_pointer_filterd_file;
-// char input_char;
-struct Token tokens;
+char nextChar;  // we will use this to look for the next character
+FILE *file_pointer_filterd_file;  // our file pointer to the filter file, so we may be able to
+struct Token tokens;            // we will be using tokens to get the token_id and token instances.
 
-char empty_String[] = "Empty";  // empty for the nullable functions
+char empty_String[] = "Empty";  // empty for the nullable functions, so strncpy can copy it. (we will be doing this for the nullables)
+
 
 //let us get rid of all the comments in, they will start with # and end with one.
 void testScanner(char *inputfile, char *outputfile) {
@@ -36,12 +36,12 @@ void testScanner(char *inputfile, char *outputfile) {
         if (!comments) {
             if (input_char != '#') {
                 if(input_char != '\t' && input_char != '\n' && input_char != ' '){
-                    fputc(input_char, output_file); // Write character to output file if not in a comment
+                    fputc(input_char, output_file); // write character to output file if not in a comment
                 }
             }else{ // # is encounterd we set comment to true
                 comments = true; //start of comment
             }
-        }else{ //
+        }else{ // we find the second comment
             if(input_char == '#'){
                 comments = false; //end of comment when
             }
@@ -56,16 +56,17 @@ void testScanner(char *inputfile, char *outputfile) {
 }
 
 
-// reading from the file and setting the nextchar as the global variable.
+// Reading from the file and setting the nextchar as the global variable.
 node_t* parser(char* filename) {
 
-    node_t* root = NULL; // initialize it to NUll
+    node_t* root = NULL; //initialize it to NUll
 
     file_pointer_filterd_file = fopen(filename, "r"); // Open the file in read mode
     if (file_pointer_filterd_file == NULL) {
         printf("Error opening file.\n");
         return NULL;
     }
+    //reseting
     memset(tokens.tokeninstance, '\0', MAX_INSTANCE_TOKEN);
 
     nextChar = fgetc(file_pointer_filterd_file);
@@ -89,7 +90,6 @@ node_t* parser(char* filename) {
     //printf("token found: %s--- %s--line: %d\n", tokenNames[tokens.tokenid], tokens.tokeninstance, line_nums);
 
     //fclose(file_pointer_filterd_file)
-    //added for the seg-fault
 
     return root;
 }
@@ -105,7 +105,6 @@ node_t* S(){
     P->center = D();
 
     printf("1. End of S non-terminal\n");
-    printf("1.1 Value of P: %p, Left: %p, Right: %p\n", (void*)P, (void*)(P->left), (void*)(P->right)); // Print P, left, and right
     printf("EXITING S()\n");
 
     return P;
@@ -188,7 +187,7 @@ node_t* C(){
            // printf("3.C token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
 
             node_t* c_tokenptr_2 = createNode(' ');
-           // c_tokenptr_2 -> token_id = tokens.tokenid;   //getting token id
+           c_tokenptr_2 -> token_id = tokens.tokenid;   //getting token id
             strncpy(c_tokenptr_2->token_instance, tokens.tokeninstance,MAX_INSTANCE_TOKEN );
             P->center = c_tokenptr_2;
 

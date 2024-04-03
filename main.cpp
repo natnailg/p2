@@ -59,28 +59,23 @@ int main(int argc, char* argv[]){
         fclose(filepointer);
     }//end of else reading from file.
 
-// call the filter function in testscanner and sending it a file to write the filtered version to.
+    // call the filter function in test-scanner() and sending it a file to write the filtered version to.
     char* outputfile = "output";
     testScanner(Readin, outputfile);
 
-    node_t* root = parser(outputfile); //passing the char array not the file pointer
+    node_t* root = parser(outputfile); //passing the char array not the file pointer of the filtered file to the parser
     if (root == NULL) {
         printf("Failed to create abstract syntax tree.\n");
         return NULL;
     }
-    /// Print the abstract syntax tree (AST)
-    printf("Abstract Syntax Tree:\n");
 
     // Add a print statement before and after calling print_inorder_tree
-    printf("Before printing AST.\n\n");
+    printf("Pre-order Tree\n");
     //print the inorder tree
-    print_inorder_tree(root, 0);  //printing the tree;
-
-    printf("\n\nAfter printing AST.\n");
-
-    // Free the memory allocated for the root node
+    print_inorder_tree(root, 0);  //printing the tree depth is 0
 
 
+    // Free the memory allocated for the
     freeNode(root);
     return 0;
 

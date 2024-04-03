@@ -187,7 +187,8 @@ node_t* C(){
            // printf("3.C token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
 
             node_t* c_tokenptr_2 = createNode(' ');
-           c_tokenptr_2 -> token_id = tokens.tokenid;   //getting token id
+            c_tokenptr_2->token_id = strdup(tokenNames[tokens.tokenid]);
+          // c_tokenptr_2 -> token_id = tokens.tokenid;   //getting token id
             strncpy(c_tokenptr_2->token_instance, tokens.tokeninstance,MAX_INSTANCE_TOKEN );
             P->center = c_tokenptr_2;
 

@@ -109,7 +109,7 @@ Token Scanner() {
         column = mapingchar(nextChar); // Get column index using mappingchar function
         nextState = Table[state][column];
 
-        //      printf("entering: nextchar: %c, column: %d, state: %d, nextstate: %d, line_nums: %d, line_num_tk: %d\n", nextChar, column, state, nextState, line_nums,tokens.line_num);
+        //printf("entering: nextchar: %c, column: %d, state: %d, nextstate: %d, line_nums: %d, line_num_tk: %d\n", nextChar, column, state, nextState, line_nums,tokens.line_num);
 
         //printf("2.1 froms readfromFile: %s \n", tokens.tokeninstance);
 

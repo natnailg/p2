@@ -15,20 +15,14 @@ void print_preorder_tree(node_t* root, int depth) {
         // printf("Error root is Null in PrintAST\n");
         return;
     }
-/*
-    // Print the current node with appropriate indentation
-    for (int i = 0; i < depth; i++) {
-        printf("  ");
-    }
-*/
-    // Skip printing nodes with label 'X'
+
+    // skip printing nodes with label ' ', i can't find any other way to format it beside creating another empty node.
     if (root->Label != ' ')
     {
         printf("%*c%c\n", depth*3, ' ', root->Label);
     }//
     else{
-        //printf("%c", root->Label);
-        // Print token instance if it exists
+        // print token instance if it exists
 
         if(root->token_id != 0){
             //printf("%d", tokens.tokenid);
@@ -36,27 +30,27 @@ void print_preorder_tree(node_t* root, int depth) {
 
         }else{
             //printf("inside of else %d", tokens.tokenid);
-
             printf("%*c %s\n", depth * 3, ' ', root->token_instance); // this is the only way which i can print the empty with out token being 0
 
         }
 
     }
 
-    // Recursively print the left subtree with increased depth
+    // recursively print the left subtree with increased depth
     if(root->left != NULL){
         print_preorder_tree(root->left, depth + 1);
     }
-
+    // recursively print the center (second child) subtree with increased depth
     if(root->center != NULL) {
         print_preorder_tree(root->center, depth + 1);
     }
 
-    // Recursively print the right subtree with increased depth
+    // recursively print the center (third child) subtree with increased depth
     if(root->right != NULL) {
         print_preorder_tree(root->right, depth + 1);
     }
 
+    // recursively print the center (fourth child) subtree with increased depth
     if(root->far_right != NULL) {
         print_preorder_tree(root->far_right, depth + 1);
     }

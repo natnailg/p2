@@ -38,7 +38,7 @@ void testScanner(char *inputfile, char *outputfile) {
                 if(input_char != '\t' && input_char != '\n' && input_char != ' '){
                     fputc(input_char, output_file); // write character to output file if not in a comment
                 }
-            }else{ // # is encounterd we set comment to true
+            }else{ // # is found we set comment to true
                 comments = true; //start of comment
             }
         }else{ // we find the second comment
@@ -66,7 +66,7 @@ node_t* parser(char* filename) {
         printf("Error opening file.\n");
         return NULL;
     }
-    //reseting
+    //resetting
     memset(tokens.tokeninstance, '\0', MAX_INSTANCE_TOKEN);
 
     nextChar = fgetc(file_pointer_filterd_file);
@@ -150,9 +150,9 @@ node_t* B(){
                 strncpy(B_tk_ptr_3->token_instance, tokens.tokeninstance,MAX_INSTANCE_TOKEN );
                 P->far_right = B_tk_ptr_3;
 
-                printf("5.B token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+                //printf("5.B token instance { %s } token Id %s \n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
                 tokens = Scanner();
-                printf("6.B token instance { %s } token Id %s consumed ( ! )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
+               // printf("6.B token instance { %s } token Id %s consumed ( ! )\n", tokens.tokeninstance, tokenNames[tokens.tokenid]);
 
                 return P;
 
@@ -351,12 +351,12 @@ node_t* H(){
         }else{printf("2.H ERROR\n");return NULL;}
 
     }else{
-        printf("H.7 EMPTY\n");
+        //printf("H.7 EMPTY\n");
         node_t* H_tk_ptr_3 = createNode(' ');
         //H_tk_ptr_3 -> token_id = tokens.tokenid;   //getting token id
         strncpy(H_tk_ptr_3->token_instance, empty_String,MAX_INSTANCE_TOKEN );
         P->left = H_tk_ptr_3;
-        printf("!!!EXITING empty H()\n");
+       // printf("!!!EXITING empty H()\n");
         return P;
     }
 }
@@ -476,3 +476,4 @@ node_t* L(){
 
 
 
+//I haven't removed any of my debugging prints because i wanted to use them just in case in the future.

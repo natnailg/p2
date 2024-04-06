@@ -1,7 +1,5 @@
 //
 // Created by Natnail on 3/30/2024.
-//(TreeNode*)
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -33,45 +31,16 @@ node_t* createNode(char label){
 }
 
 
-
+//free the memory
 void freeNode(node_t* node) {
     if (node == NULL) {
         return;
     }
     freeNode(node->left);
     freeNode(node->right);
-    freeNode(node->center); // Free memory of the center node
+    freeNode(node->center);
     freeNode(node->far_right);
     free(node);
 }
 
-
-
-
-
-
-
-
-
-/*
-//function to inset a node into the binary tree
-struct node_t* insertNode(struct node_t* root, char value){
-    //if the tree is empty, create a new node
-    if (root == NULL) {
-        return createNode(value);
-    }
-
-    // If the value is less than the root's data, insert into the left subtree
-    if (value < root->Label) {
-        root->left = insertNode(root->left, value);
-    }
-        // If the value is greater than the root's data, insert into the right subtree
-    else if (value > root->Label) {
-        root->right = insertNode(root->right, value);
-    }
-
-    // Return the modified root
-    return root;
-}
-*/
 

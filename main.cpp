@@ -1,7 +1,6 @@
 //
 // Created by Admin on 3/13/2024.
 //
-// check one. two, one two
 #include <stdio.h>
 #include <stdlib.h>
 #include "token.h"
@@ -69,10 +68,10 @@ int main(int argc, char* argv[]){
         return NULL;
     }
 
-    // Add a print statement before and after calling print_inorder_tree
+    // Add a print statement before and after calling print_preorder_tree
     printf("Pre-order Tree\n");
     //print the inorder tree
-    print_inorder_tree(root, 0);  //printing the tree depth is 0
+    print_preorder_tree(root, 0);  //printing the tree depth is 0
 
 
     // Free the memory allocated for the

@@ -10,7 +10,7 @@
 #include "testTree.h"
 
 
-void print_inorder_tree(node_t* root, int depth) {
+void print_preorder_tree(node_t* root, int depth) {
     if (root == NULL) {
         // printf("Error root is Null in PrintAST\n");
         return;
@@ -45,20 +45,20 @@ void print_inorder_tree(node_t* root, int depth) {
 
     // Recursively print the left subtree with increased depth
     if(root->left != NULL){
-        print_inorder_tree(root->left, depth + 1);
+        print_preorder_tree(root->left, depth + 1);
     }
 
     if(root->center != NULL) {
-        print_inorder_tree(root->center, depth + 1);
+        print_preorder_tree(root->center, depth + 1);
     }
 
     // Recursively print the right subtree with increased depth
     if(root->right != NULL) {
-        print_inorder_tree(root->right, depth + 1);
+        print_preorder_tree(root->right, depth + 1);
     }
 
     if(root->far_right != NULL) {
-        print_inorder_tree(root->far_right, depth + 1);
+        print_preorder_tree(root->far_right, depth + 1);
     }
 }
 

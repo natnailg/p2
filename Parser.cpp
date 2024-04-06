@@ -116,7 +116,7 @@ node_t* A(){
     node_t* P = createNode('A');
     P-> left  = F();
     P-> center = K();
-    printf("1. End of A non-terminal\n");
+//    printf("1. End of A non-terminal\n");
     return  P;
 }
 //

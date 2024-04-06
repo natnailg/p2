@@ -9,8 +9,8 @@
 
 struct node_t* createNode(char); // for creating a new node for tree, takes a value
 
-void print_preorder_tree(node_t* root, int depth); //printing the tree pre-orde
+void print_preorder_tree(node_t* root, int depth); //printing the tree pre-order
 
-void freeNode(node_t* node);
+void freeNode(node_t* node); //free memory
 
 #endif //P2_BUILDTREE_H
